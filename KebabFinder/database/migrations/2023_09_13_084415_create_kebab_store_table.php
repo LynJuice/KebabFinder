@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('kebab_store', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->string('description');
+            $table->string('address');
+            $table->string('phone');
+            $table->boolean('is_open');
+            $table->string('open_time');
+            $table->string('close_time');
+            $table->string('image');
         });
     }
 

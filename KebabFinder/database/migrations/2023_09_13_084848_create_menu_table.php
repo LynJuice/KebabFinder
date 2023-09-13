@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('menu', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('item name');
+            $table->string('description');
+            $table->string('price');
+            $table->string('image');
+            $table->boolean('is_available');
+            $table->string('category');
+            $table->string('kebab_store_id');
         });
     }
 
