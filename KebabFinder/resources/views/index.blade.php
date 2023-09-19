@@ -8,11 +8,11 @@
     <div class="container">
       <div class="row justify-content-between gy-5">
         <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-          <h2 data-aos="fade-up">Enjoy Your Healthy<br>Delicious Kebab</h2>
+          <h2 data-aos="fade-up">Pasimėgaukit savo sveiku<br>Skaniu kebabu</h2>
           <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-            <a href="#book-a-table" class="btn-book-a-table">Order Kebab</a>
-            <a href="https://www.youtube.com/watch?v=I5JakOHBZaQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+            <a href="#book-a-table" class="btn-book-a-table">Užsisakyti kebabą</a>
+            <a href="https://www.youtube.com/watch?v=I5JakOHBZaQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Žiūrėti vaizdo įrašą</span></a>
           </div>
         </div>
         <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
@@ -29,8 +29,13 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
+<<<<<<< Updated upstream
           <h2>Contact Us</h2>
           <p>Need Kebab? <span>Get Kebab</span></p>
+=======
+          <h2>Apie mus</h2>
+          <p>Sužinoti daugiau <span>apie mus</span></p>
+>>>>>>> Stashed changes
         </div>
 
         <div class="mb-3">
@@ -38,6 +43,30 @@
         </div><!-- End Google Maps -->
 
         <div class="row gy-4">
+<<<<<<< Updated upstream
+=======
+          <div class="col-lg-7 position-relative about-img" style="background-image: url(img/kebabai1.jpg) ;" data-aos="fade-up" data-aos-delay="150">
+            <div class="call-us position-absolute">
+              <h4>Rezervuoti</h4>
+              <p>+1 5589 55488 55</p>
+            </div>
+          </div>
+          <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
+            <div class="content ps-0 ps-lg-5">
+              <p class="fst-italic">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </p>
+              <ul>
+                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              </ul>
+              <p>
+                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+              </p>
+>>>>>>> Stashed changes
 
           <div class="col-md-6">
             <div class="info-item  d-flex align-items-center">
@@ -116,13 +145,13 @@
 
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="why-box">
-              <h3>Why Choose Yummy?</h3>
+              <h3>Kodel rinktis Kebab Finder</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
                 Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
               </p>
               <div class="text-center">
-                <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                <a href="#" class="more-btn">Sužinoti daugiau <i class="bx bx-chevron-right"></i></a>
               </div>
             </div>
           </div><!-- End Why Box -->
@@ -171,14 +200,14 @@
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Clients</p>
+              <p>Klientai</p>
             </div>
           </div><!-- End Stats Item -->
 
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
+              <p>Projektai</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -192,7 +221,7 @@
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Workers</p>
+              <p>Darbuotojai</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -206,8 +235,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Our Menu</h2>
-          <p>Check Our <span>Top Restaurants</span></p>
+          <h2>Menu</h2>
+          <p>Savaites <span>Top Kebabinės</span></p>
         </div>
 
         <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
@@ -399,7 +428,7 @@
 
             <div class="tab-header text-center">
               <p>Menu</p>
-              <h3>Lunch</h3>
+              <h3>Pietūs</h3>
             </div>
 
             <div class="row gy-5">
