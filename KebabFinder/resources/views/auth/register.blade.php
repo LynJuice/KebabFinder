@@ -29,6 +29,12 @@
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
+            <!-- checkbox if kebab owner -->
+            <div class="mt-4">
+                <x-label for="kebab_owner" value="{{ __('Are you a kebab owner?') }}" />
+                <x-input id="kebab_owner" class="block mt-1 w-full" type="checkbox" name="kebab_owner" :value="old('kebab_owner')" required autofocus autocomplete="kebab_owner" />
+            </div>
+
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-label for="terms">

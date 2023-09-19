@@ -41,8 +41,8 @@ class PermissionSeeder extends Seeder
         $admin->givePermissionTo('add kebab');
         $admin->givePermissionTo('delete kebab');
         $admin->givePermissionTo('manage reviews');
-        $admin->givePermissionTo('delete reviews');
-        $admin->givePermissionTo('change reviews');
+        $admin->givePermissionTo('delete review');
+        $admin->givePermissionTo('change review');
 
         $vartotojas->givePermissionTo('write review');
 
