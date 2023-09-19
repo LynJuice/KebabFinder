@@ -128,11 +128,11 @@
             <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
           </div>
           <div class="my-3">
-            <div class="loading">Loading</div>
+            <div class="loading">Kraunama</div>
             <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
+            <div class="sent-message">Jūsų žinutė buvo išsiųsta. Ačiū!</div>
           </div>
-          <div class="text-center"><button type="submit">Send Message</button></div>
+          <div class="text-center"><button type="submit">Siųsti žinutę</button></div>
         </form><!--End Contact Form -->
 
       </div>
@@ -214,7 +214,7 @@
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
+              <p>Valandos per kurias padeda pagalba</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -235,7 +235,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Menu</h2>
+          <h2>Meniu</h2>
           <p>Savaites <span>Top Kebabinės</span></p>
         </div>
 
@@ -271,7 +271,7 @@
           <div class="tab-pane fade active show" id="menu-starters">
 
             <div class="tab-header text-center">
-              <p>Menu</p>
+              <p>Meniu</p>
               <h3>Bistro</h3>
             </div>
 
@@ -349,8 +349,8 @@
           <div class="tab-pane fade" id="menu-breakfast">
 
             <div class="tab-header text-center">
-              <p>Menu</p>
-              <h3>Breakfast</h3>
+              <p>Meniu</p>
+              <h3>Pusryčiai</h3>
             </div>
 
             <div class="row gy-5">
@@ -427,7 +427,7 @@
           <div class="tab-pane fade" id="menu-lunch">
 
             <div class="tab-header text-center">
-              <p>Menu</p>
+              <p>Meniu</p>
               <h3>Pietūs</h3>
             </div>
 
@@ -505,8 +505,8 @@
           <div class="tab-pane fade" id="menu-dinner">
 
             <div class="tab-header text-center">
-              <p>Menu</p>
-              <h3>Dinner</h3>
+              <p>Meniu</p>
+              <h3>Vakarienė</h3>
             </div>
 
             <div class="row gy-5">
@@ -590,8 +590,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Testimonials</h2>
-          <p>What Are They <span>Saying About Us</span></p>
+          <h2>Atsiliepimai</h2>
+          <p>Ką Žmonės <span>Sako Apie Mus</span></p>
         </div>
 
         <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
@@ -705,8 +705,8 @@
       <div class="container-fluid" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Events</h2>
-          <p>Share <span>Your Moments</span> In Our Restaurant</p>
+          <h2>Eventai</h2>
+          <p>Pasidalinkite <span>Savo Akimirkomis</span> Mūsų Kebabinėse</p>
         </div>
 
         <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
@@ -721,7 +721,7 @@
             </div><!-- End Event item -->
 
             <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(img/events-2.jpg)">
-              <h3>Private Parties</h3>
+              <h3>Privatūs Vakarėliai</h3>
               <div class="price align-self-start">$289</div>
               <p class="description">
                 In delectus sint qui et enim. Et ab repudiandae inventore quaerat doloribus. Facere nemo vero est ut dolores ea assumenda et. Delectus saepe accusamus aspernatur.
@@ -729,7 +729,7 @@
             </div><!-- End Event item -->
 
             <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(img/events-3.jpg)">
-              <h3>Birthday Parties</h3>
+              <h3>Gimtadienio Vakarėliai</h3>
               <div class="price align-self-start">$499</div>
               <p class="description">
                 Laborum aperiam atque omnis minus omnis est qui assumenda quos. Quis id sit quibusdam. Esse quisquam ducimus officia ipsum ut quibusdam maxime. Non enim perspiciatis.
@@ -748,8 +748,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Chefs</h2>
-          <p>Our <span>Proffesional</span> Chefs</p>
+          <h2>Šefai</h2>
+          <p>Mūsų <span>Profesionalūs</span> Šefai</p>
         </div>
 
         <div class="row gy-4">
