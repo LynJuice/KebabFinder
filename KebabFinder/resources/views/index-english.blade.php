@@ -29,8 +29,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Apie mus</h2>
-          <p>Sužinoti daugiau <span>apie mus</span></p>
+          <h2>About us</h2>
+          <p>Learn more <span>about us</span></p>
         </div>
 
         <div class="mb-3">
@@ -40,7 +40,7 @@
         <div class="row gy-4">
           <div class="col-lg-7 position-relative about-img" style="background-image: url(img/kebabai1.jpg) ;" data-aos="fade-up" data-aos-delay="150">
             <div class="call-us position-absolute">
-              <h4>Rezervuoti</h4>
+              <h4>Reserve</h4>
               <p>+1 5589 55488 55</p>
             </div>
           </div>
@@ -74,7 +74,7 @@
             <div class="info-item d-flex align-items-center">
               <i class="icon bi bi-envelope flex-shrink-0"></i>
               <div>
-                <h3>Kontaktai</h3>
+                <h3>Email Us</h3>
                 <p>contact@example.com</p>
               </div>
             </div>
@@ -84,7 +84,7 @@
             <div class="info-item  d-flex align-items-center">
               <i class="icon bi bi-telephone flex-shrink-0"></i>
               <div>
-                <h3>Mobilus</h3>
+                <h3>Call Us</h3>
                 <p>+1 5589 55488 55</p>
               </div>
             </div>
@@ -94,7 +94,7 @@
             <div class="info-item  d-flex align-items-center">
               <i class="icon bi bi-share flex-shrink-0"></i>
               <div>
-                <h3>........</h3>
+                <h3>Opening Hours</h3>
                 <div><strong>Mon-Sat:</strong> 11AM - 23PM;
                   <strong>Sunday:</strong> Closed
                 </div>
@@ -120,9 +120,9 @@
             <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
           </div>
           <div class="my-3">
-            <div class="loading">Kraunama </div>
+            <div class="loading">Loading</div>
             <div class="error-message"></div>
-            <div class="sent-message">Žinutė išsiusta. Ačiū!</div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
           </div>
           <div class="text-center"><button type="submit">Send Message</button></div>
         </form><!--End Contact Form -->
@@ -137,7 +137,7 @@
 
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="why-box">
-              <h3>Kodel rinktis Kebab Finder</h3>
+              <h3>Why choose Kebab Finder</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
                 Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
@@ -342,7 +342,7 @@
 
             <div class="tab-header text-center">
               <p>Menu</p>
-              <h3>Pusryčiai</h3>
+              <h3>Breakfast</h3>
             </div>
 
             <div class="row gy-5">
@@ -498,7 +498,7 @@
 
             <div class="tab-header text-center">
               <p>Menu</p>
-              <h3>Vakarienė</h3>
+              <h3>Dinner</h3>
             </div>
 
             <div class="row gy-5">
@@ -582,8 +582,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Atsiliepimai</h2>
-          <p>Ką klientai  <span>sako apie mus</span></p>
+          <h2>Testimonials</h2>
+          <p>What Are They <span>Saying About Us</span></p>
         </div>
 
         <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
@@ -872,8 +872,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>galerija</h2>
-          <p>tikrinti <span>mūsų galerija</span></p>
+          <h2>gallery</h2>
+          <p>Check <span>Our Gallery</span></p>
         </div>
 
         <div class="gallery-slider swiper">
@@ -898,14 +898,14 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Apie mus</h2>
-          <p>sužinoti daugiau <span>apie mus</span></p>
+          <h2>About Us</h2>
+          <p>Learn More <span>About Us</span></p>
         </div>
 
         <div class="row gy-4">
           <div class="col-lg-7 position-relative about-img" style="background-image: url(img/kebabai1.jpg) ;" data-aos="fade-up" data-aos-delay="150">
             <div class="call-us position-absolute">
-              <h4>Užsakyti staliuką</h4>
+              <h4>Book a Table</h4>
               <p>+1 5589 55488 55</p>
             </div>
           </div>
