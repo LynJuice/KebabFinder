@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('address');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->string('phone');
             $table->boolean('is_open');
             $table->string('open_time');

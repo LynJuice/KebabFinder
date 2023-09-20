@@ -23,19 +23,14 @@
   </section><!-- End Hero Section -->
 
   <main id="main">
-
+    <x-map />
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-<<<<<<< Updated upstream
           <h2>Contact Us</h2>
           <p>Need Kebab? <span>Get Kebab</span></p>
-=======
-          <h2>Apie mus</h2>
-          <p>Sužinoti daugiau <span>apie mus</span></p>
->>>>>>> Stashed changes
         </div>
 
         <div class="mb-3">
@@ -43,30 +38,6 @@
         </div><!-- End Google Maps -->
 
         <div class="row gy-4">
-<<<<<<< Updated upstream
-=======
-          <div class="col-lg-7 position-relative about-img" style="background-image: url(img/kebabai1.jpg) ;" data-aos="fade-up" data-aos-delay="150">
-            <div class="call-us position-absolute">
-              <h4>Rezervuoti</h4>
-              <p>+1 5589 55488 55</p>
-            </div>
-          </div>
-          <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
-            <div class="content ps-0 ps-lg-5">
-              <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-              </ul>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-              </p>
->>>>>>> Stashed changes
 
           <div class="col-md-6">
             <div class="info-item  d-flex align-items-center">

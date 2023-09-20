@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->boolean('is_available');
             $table->string('category');
-            $table->string('kebab_store_id');
+            $table->id('kebab_store_id');
         });
     }
 
