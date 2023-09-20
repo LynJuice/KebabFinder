@@ -43,9 +43,17 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $role = Role::where('name', 'vartotojas')->first();
-        $user->roles()->attach($role);
-
+        // if the user clicked on the checkbox, then assign the role of kebab admin
+        if ($request->has('kebabAdmin')) {
+            $role = Role::where('name', 'kebabines administratorius')->first();
+            $user->roles()->attach($role);
+        } else
+        // if the user clicked on the checkbox, then assign the role of site admin
+        {
+            $role = Role::where('name', 'vartotojas')->first();
+            $user->roles()->attach($role);
+        }
+        
         event(new Registered($user));
 
         Auth::login($user);

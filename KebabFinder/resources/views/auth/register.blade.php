@@ -31,8 +31,8 @@
 
             <!-- checkbox if kebab owner -->
             <div class="mt-4">
-                <x-label for="kebab_owner" value="{{ __('Are you a kebab owner?') }}" />
-                <x-input id="kebab_owner" class="block mt-1 w-full" type="checkbox" name="kebab_owner" :value="old('kebab_owner')" required autofocus autocomplete="kebab_owner" />
+                <x-label for="kebabAdmin" value="{{ __('Are you a kebab owner?') }}" />
+                <x-input id="kebabAdmin" class="block mt-1 w-full" type="checkbox" name="kebabAdmin" :value="old('kebabAdmin')" autofocus autocomplete="kebabAdmin" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
