@@ -23,7 +23,7 @@
   </section><!-- End Hero Section -->
 
   <main id="main">
-
+    <x-map />
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
@@ -38,28 +38,6 @@
         </div><!-- End Google Maps -->
 
         <div class="row gy-4">
-          <div class="col-lg-7 position-relative about-img" style="background-image: url(img/kebabai1.jpg) ;" data-aos="fade-up" data-aos-delay="150">
-            <div class="call-us position-absolute">
-              <h4>Rezervuoti</h4>
-              <p>+1 5589 55488 55</p>
-            </div>
-          </div>
-          <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
-            <div class="content ps-0 ps-lg-5">
-              <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-              </ul>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-              </p>
-
           <div class="col-md-6">
             <div class="info-item  d-flex align-items-center">
               <i class="icon bi bi-map flex-shrink-0"></i>
@@ -124,7 +102,7 @@
             <div class="error-message"></div>
             <div class="sent-message">Žinutė išsiusta. Ačiū!</div>
           </div>
-          <div class="text-center"><button type="submit">Send Message</button></div>
+          <div class="text-center"><button type="submit">Siųsti žinutę</button></div>
         </form><!--End Contact Form -->
 
       </div>
@@ -206,7 +184,7 @@
           <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
+              <p>Valandos per kurias padeda pagalba</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -227,7 +205,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Menu</h2>
+          <h2>Meniu</h2>
           <p>Savaites <span>Top Kebabinės</span></p>
         </div>
 
@@ -263,7 +241,7 @@
           <div class="tab-pane fade active show" id="menu-starters">
 
             <div class="tab-header text-center">
-              <p>Menu</p>
+              <p>Meniu</p>
               <h3>Bistro</h3>
             </div>
 
@@ -419,7 +397,7 @@
           <div class="tab-pane fade" id="menu-lunch">
 
             <div class="tab-header text-center">
-              <p>Menu</p>
+              <p>Meniu</p>
               <h3>Pietūs</h3>
             </div>
 
@@ -697,8 +675,8 @@
       <div class="container-fluid" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Events</h2>
-          <p>Share <span>Your Moments</span> In Our Restaurant</p>
+          <h2>Eventai</h2>
+          <p>Pasidalinkite <span>Savo Akimirkomis</span> Mūsų Kebabinėse</p>
         </div>
 
         <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
@@ -713,7 +691,7 @@
             </div><!-- End Event item -->
 
             <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(img/events-2.jpg)">
-              <h3>Private Parties</h3>
+              <h3>Privatūs Vakarėliai</h3>
               <div class="price align-self-start">$289</div>
               <p class="description">
                 In delectus sint qui et enim. Et ab repudiandae inventore quaerat doloribus. Facere nemo vero est ut dolores ea assumenda et. Delectus saepe accusamus aspernatur.
@@ -721,7 +699,7 @@
             </div><!-- End Event item -->
 
             <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(img/events-3.jpg)">
-              <h3>Birthday Parties</h3>
+              <h3>Gimtadienio Vakarėliai</h3>
               <div class="price align-self-start">$499</div>
               <p class="description">
                 Laborum aperiam atque omnis minus omnis est qui assumenda quos. Quis id sit quibusdam. Esse quisquam ducimus officia ipsum ut quibusdam maxime. Non enim perspiciatis.
@@ -740,8 +718,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Chefs</h2>
-          <p>Our <span>Proffesional</span> Chefs</p>
+          <h2>Šefai</h2>
+          <p>Mūsų <span>Profesionalūs</span> Šefai</p>
         </div>
 
         <div class="row gy-4">
