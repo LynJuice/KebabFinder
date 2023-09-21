@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\KebabShop;
 use Illuminate\Http\Request;
 
-class KebabStoreController extends Controller
+class KebabShopController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class KebabStoreController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(KebabShop $kebabShop)
     {
         //
     }
@@ -42,7 +42,7 @@ class KebabStoreController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(KebabShop $kebabShop)
     {
         //
     }
@@ -50,7 +50,7 @@ class KebabStoreController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, KebabShop $kebabShop)
     {
         //
     }
@@ -58,7 +58,7 @@ class KebabStoreController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(KebabShop $kebabShop)
     {
         //
     }
