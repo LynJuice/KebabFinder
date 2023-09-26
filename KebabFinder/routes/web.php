@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\KebabShopController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +20,10 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', [HomeController::class, "index"])->name('index');
+// Route::get('/', function () {
+//     return view('index');
+// })->name('index');
 
 // add route to add kebabShop to using resource controller
 Route::resource('kebabShop', 'App\Http\Controllers\KebabShop');

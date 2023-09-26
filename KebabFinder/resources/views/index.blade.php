@@ -681,16 +681,17 @@
 
         <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
-
-            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(img/events-1.jpg)">
-              <h3>Custom Parties</h3>
-              <div class="price align-self-start">$99</div>
+            @foreach($kebab_list as $item)
+            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url({{ $item->image }})">
+              <h3>{{ $item->name }}</h3>
+              <div class="price align-self-start">{{ $item->address }}</div>
               <p class="description">
-                Quo corporis voluptas ea ad. Consectetur inventore sapiente ipsum voluptas eos omnis facere. Enim facilis veritatis id est rem repudiandae nulla expedita quas.
+                {{ $item->description }}
               </p>
             </div><!-- End Event item -->
+            @endforeach
 
-            <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(img/events-2.jpg)">
+            {{-- <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url(img/events-2.jpg)">
               <h3>Privatūs Vakarėliai</h3>
               <div class="price align-self-start">$289</div>
               <p class="description">
@@ -704,7 +705,7 @@
               <p class="description">
                 Laborum aperiam atque omnis minus omnis est qui assumenda quos. Quis id sit quibusdam. Esse quisquam ducimus officia ipsum ut quibusdam maxime. Non enim perspiciatis.
               </p>
-            </div><!-- End Event item -->
+            </div><!-- End Event item --> --}}
 
           </div>
           <div class="swiper-pagination"></div>
