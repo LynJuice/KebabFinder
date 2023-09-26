@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         // ]);
         // add permissions
         $this->call(PermissionSeeder::class);
+        $this->call(KebabShopsSeeder::class);
     }
 }

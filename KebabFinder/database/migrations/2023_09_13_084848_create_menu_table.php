@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->boolean('is_available');
             $table->string('category');
-            $table->id('kebab_store_id');
+            $table->foreignId('kebab_shops_id')->constrained('kebab_shops');
         });
     }
 
