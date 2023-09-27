@@ -20,10 +20,8 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
+// index thru the home contoller
 Route::get('/', [HomeController::class, "index"])->name('index');
-// Route::get('/', function () {
-//     return view('index');
-// })->name('index');
 
 // add route to add kebabShop to using resource controller
 Route::resource('kebabShop', 'App\Http\Controllers\KebabShop');
@@ -38,6 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/kebabAdd', [KebabShopController::class, 'create'])->name('kebabShop.create');
+    Route::post('/kebabStore', [KebabShopController::class, 'store'])->name('kebabShop.store');
 });
 
 Route::get('/logout', function () {
