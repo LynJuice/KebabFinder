@@ -7,13 +7,16 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations. , 10, 2
      */
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->decimal('price');
+            $table->boolean('in_stock')->default(true);
         });
     }
 
