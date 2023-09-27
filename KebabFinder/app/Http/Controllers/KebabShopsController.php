@@ -12,7 +12,8 @@ class KebabShopsController extends Controller
      */
     public function index()
     {
-        //
+        $kebab_list = KebabShops::all();
+        return view('kebab', compact("kebab_list"));
     }
 
     /**
@@ -20,7 +21,7 @@ class KebabShopsController extends Controller
      */
     public function create()
     {
-        //
+        return view('kebabShop.create');
     }
 
     /**
@@ -28,7 +29,16 @@ class KebabShopsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $address = $request->input('address');
+        $latitude = $request->input('latitude');
+        $longitude = $request->input('longitude');
+        $phone = $request->input('phone');
+        $is_open = $request->input('is_open');
+        $open_time = $request->input('open_time');
+        $close_time = $request->input('close_time');
+        $image = $request->input('image');
     }
 
     /**
