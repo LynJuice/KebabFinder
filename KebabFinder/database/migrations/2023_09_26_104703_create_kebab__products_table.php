@@ -16,10 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kebab_shops_id')->constrained('kebab_shops');
             $table->foreignId('products_id')->constrained('products');
-            $table->string('name');
-            $table->string('description');
             $table->float('price', 8, 2);
-            $table->string('image');
             $table->timestamps();
         });
     }

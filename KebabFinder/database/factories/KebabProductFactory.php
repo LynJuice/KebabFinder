@@ -17,10 +17,9 @@ class KebabProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'description' => $this->faker->text,
-            'price' => $this->faker->randomFloat(2, 0, 999999.99),
-            'image' => $this->faker->imageUrl,
+            // // $table->foreignId('kebab_shops_id')->constrained('kebab_shops');
+            // // $table->foreignId('products_id')->constrained('products');
+            // 'price' => $this->faker->randomFloat(2, 0, 999999.99),
         ];
     }
 }
