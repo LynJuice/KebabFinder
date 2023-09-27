@@ -5,6 +5,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\KebabShops;
+use App\Models\User;
 
 class KebabShopsFactory extends Factory
 {
@@ -16,7 +17,10 @@ class KebabShopsFactory extends Factory
      */
     public function definition(): array
     {
+       // User::whereHas("roles", function($q){ $q->where("name", "kebabines administratorius"); })->get()->random()->id;
         return [
+           // 'user_id' => $this->faker->numberBetween(1, 10),
+            'user_id' => User::whereHas("roles", function($q){ $q->where("name", "kebabines administratorius"); })->get()->random()->id,
             'name' => $this->faker->name,
             'description' => $this->faker->text,
             'address' => $this->faker->address,
