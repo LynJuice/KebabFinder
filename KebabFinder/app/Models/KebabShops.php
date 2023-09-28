@@ -24,4 +24,13 @@ class KebabShops extends Model
     ];
 
 
+    public function products()
+    {
+        return $this->belongsToMany(Products::class, 'kebab_products', 'kebab_shops_id', 'products_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

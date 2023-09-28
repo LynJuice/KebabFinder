@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -18,9 +19,9 @@ class PermissionSeeder extends Seeder
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
+        $admin = Role::create(['name' => 'svetaines administratorius']);
         $kebadmin = Role::create(['name' => 'kebabines administratorius']);
         $vartotojas = Role::create(['name' => 'vartotojas']);
-        $admin = Role::create(['name' => 'svetaines administratorius']);
 
         // create permissions
         Permission::create(['name' => 'write review']);
@@ -45,6 +46,19 @@ class PermissionSeeder extends Seeder
         $admin->givePermissionTo('change review');
 
         $vartotojas->givePermissionTo('write review');
+
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@kebab.lt'
+        ])->assignRole('svetaines administratorius');
+
+        for ($i = 0; $i < 10; $i++) {
+            User::factory()->create()->assignRole('kebabines administratorius');
+        }
+        for ($i = 0; $i < 10; $i++) {
+            User::factory()->create()->assignRole('vartotojas');
+        }
+
 
     }
 }

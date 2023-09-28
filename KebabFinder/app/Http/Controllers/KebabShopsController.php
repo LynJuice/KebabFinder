@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KebabShops;
 use Illuminate\Http\Request;
 
-class KebabShopController extends Controller
+class KebabShopsController extends Controller
 {
     /**
      * Display a listing of the resource.

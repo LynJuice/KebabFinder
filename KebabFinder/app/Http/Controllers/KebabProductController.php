@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kebab_Product;
+use App\Models\KebabProduct;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKebab_ProductRequest;
 use App\Http\Requests\UpdateKebab_ProductRequest;
@@ -36,7 +36,7 @@ class KebabProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Kebab_Product $kebab_Product)
+    public function show(KebabProduct $kebab_Product)
     {
         //
     }
@@ -44,7 +44,7 @@ class KebabProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kebab_Product $kebab_Product)
+    public function edit(KebabProduct $kebab_Product)
     {
         //
     }
@@ -52,7 +52,7 @@ class KebabProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateKebab_ProductRequest $request, Kebab_Product $kebab_Product)
+    public function update(UpdateKebab_ProductRequest $request, KebabProduct $kebab_Product)
     {
         //
     }
@@ -60,7 +60,7 @@ class KebabProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kebab_Product $kebab_Product)
+    public function destroy(KebabProduct $kebab_Product)
     {
         //
     }
