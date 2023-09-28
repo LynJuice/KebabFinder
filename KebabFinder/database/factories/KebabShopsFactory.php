@@ -49,7 +49,8 @@ class KebabShopsFactory extends Factory
             'is_open' => $this->faker->boolean,
             'open_time' => $this->faker->time,
             'close_time' => $this->faker->time,
-            'image' => $this->faker->imageUrl,
+            'image' => "/img/kebabshops/kebabshop-" . fake()->numberBetween(1, 10) . ".jpg",
+            // 'image' => $this->faker->imageUrl,
         ];
     }
 }
