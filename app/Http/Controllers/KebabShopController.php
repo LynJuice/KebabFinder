@@ -10,7 +10,7 @@ use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class KebabShopsController extends Controller
+class KebabShopController extends Controller
 {
     /**
      * Display a listing of the resource.
