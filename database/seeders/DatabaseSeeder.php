@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(KebabShopsSeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(KebabProductSeeder::class);
+        $this->call(ReviewsSeeder::class);
     }
 }
