@@ -20,7 +20,7 @@ class ReviewsFactory extends Factory
     {
         return [
             'user_id' => User::whereHas("roles", function($q){ $q->where("name", "vartotojas"); })->get()->random()->id,
-            'products_id' => KebabProduct::all()->random()->id,
+            'kebab_product_id' => KebabProduct::all()->random()->id,
             'komentaras' => $this->faker->text(100),
             'reitingas' => $this->faker->numberBetween(1, 5), 
         ];

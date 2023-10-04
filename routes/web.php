@@ -4,6 +4,7 @@ use App\Http\Controllers\KebabShopController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReviewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Route::get('/', [HomeController::class, "index"])->name('index');
 // add route to add kebabShop to using resource controller
 Route::resource('kebabShop', 'App\Http\Controllers\KebabShop');
 
-
+Route::resource('reviews', ReviewsController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

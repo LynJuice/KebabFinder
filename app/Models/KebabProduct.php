@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use app\models\KebabShops;
-use app\models\Products;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class KebabProduct extends Model
 {
@@ -20,4 +20,20 @@ class KebabProduct extends Model
         'image',
 
     ];
+
+    public function kebabShops(): BelongsTo
+    {
+        return $this->belongsTo(KebabShops::class);
+    }
+
+    public function products(): BelongsTo
+    {
+        return $this->belongsTo(Products::class);
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Reviews::class);
+    }
+    
 }
