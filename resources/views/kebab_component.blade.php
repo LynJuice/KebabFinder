@@ -6,19 +6,15 @@
     <td>{{ $kebab->open_time }}</td>
     <td>{{ $kebab->close_time }}</td>
     <td>
-        <div class="dropdown">
-            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                data-bs-toggle="dropdown">
-                <i class="bx bx-dots-vertical-rounded"></i>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="javascript:void(0);"><i
-                        class="bx bx-edit-alt me-1"></i> Edit</a>
-                <a class="dropdown-item" href="javascript:void(0);"><i
-                        class="bx bx-show me-1"></i> Show</a>
-                <a class="dropdown-item" href="javascript:void(0);"><i
-                        class="bx bx-trash me-1"></i> Delete</a>
-            </div>
-        </div>
+        <form action="{{ route('kebab.destroy', $kebab->id) }}" method="POST">
+
+            <a class="btn btn-info" href="{{ route('kebab.show', $kebab->id) }}">Show</a>
+
+            <a class="btn btn-primary" href="{{ route('kebab.edit', $kebab->id) }}">Edit</a>
+
+            @csrf
+            @method('DELETE')
+
+            <button type="submit" class="btn btn-danger">Delete</button>
     </td>
 </tr>

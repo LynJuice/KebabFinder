@@ -74,7 +74,7 @@ class KebabShopsController extends Controller
      */
     public function show(KebabShops $kebabShop)
     {
-        //
+        return view('kebabShops.show', compact('kebab'));
     }
 
     /**
@@ -82,7 +82,7 @@ class KebabShopsController extends Controller
      */
     public function edit(KebabShops $kebabShop)
     {
-        //
+        return view('kebab.edit',compact('kebab'));
     }
 
     /**
@@ -90,7 +90,22 @@ class KebabShopsController extends Controller
      */
     public function update(UpdateKebabShopsRequest $request, KebabShops $kebabShop)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => '',
+            'address' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'phone' => 'required',
+            'open_time' => 'required',
+            'close_time' => 'required',
+            'image' => '',
+        ]);
+        
+        $kebabShop->update($request->all());
+        
+        return redirect()->route('kebab.index')
+                        ->with('success','KebabShop updated successfully');
     }
 
     /**
@@ -98,6 +113,9 @@ class KebabShopsController extends Controller
      */
     public function destroy(KebabShops $kebabShop)
     {
-        //
+        $kebabShop->delete();
+         
+        return redirect()->route('kebab.index')
+                        ->with('success','KebabShop deleted successfully'); 
     }
 }

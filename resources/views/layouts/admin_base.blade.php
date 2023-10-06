@@ -43,7 +43,29 @@
     @yield('styles')
   </head>
   <body>
-    @yield('content')
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        @include('layouts.admin_sidebar')
+        <div class="layout-page">
+          @include('layouts.nav')
+          <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+              @if ($message = Session::get('success'))
+              <div class="alert alert-success">
+                  <p>{{ $message }}</p>
+              </div>
+              @endif
+  
+              @yield('content')
+            </div>
+            @include('layouts.admin_footer')
+            <div class="content-backdrop fade"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="../assets/vendor/libs/jquery/jquery.js"></script>

@@ -38,6 +38,8 @@ Route::get('/table', [KebabShopsController::class, "table"])->name('table');
 //     return view('table');
 // })->name('table');
 
+Route::resource('kebab', KebabShopsController::class);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
