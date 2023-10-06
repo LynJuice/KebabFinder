@@ -34,12 +34,9 @@ Route::get('/admin', function () {
     return view('admin');
 })->name('admin');
 
-Route::get('/table', [KebabShopsController::class, "table"])->name('table');
 // Route::get('/table', function () {
 //     return view('table');
 // })->name('table');
-
-Route::resource('kebab', KebabShopsController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -53,6 +50,8 @@ Route::middleware('auth')->group(function () {
     // Route::post('/kebabStore', [KebabShopsController::class, 'store'])->name('kebabShops.store');
     Route::resource('shops', KebabShopsController::class);
     Route::resource('products', ProductsController::class);
+    Route::resource('kebab', KebabShopsController::class);
+    Route::get('/table', [KebabShopsController::class, "table"])->name('table');
 });
 
 Route::get('/logout', function () {
