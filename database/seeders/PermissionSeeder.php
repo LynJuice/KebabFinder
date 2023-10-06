@@ -52,6 +52,11 @@ class PermissionSeeder extends Seeder
             'email' => 'admin@kebab.lt'
         ])->assignRole('svetaines administratorius');
 
+        User::factory()->create([
+            'name' => 'Pas Ibo',
+            'email' => 'pasibo@kebab.lt'
+        ])->assignRole('kebabines administratorius');
+
         for ($i = 0; $i < 10; $i++) {
             User::factory()->create()->assignRole('kebabines administratorius');
         }
