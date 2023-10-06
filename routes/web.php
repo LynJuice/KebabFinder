@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\KebabShopsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use App\Models\KebabShops;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,7 @@ Route::middleware('auth')->group(function () {
     // Route::get('/kebabAdd', [KebabShopsController::class, 'create'])->name('kebabShops.create');
     // Route::post('/kebabStore', [KebabShopsController::class, 'store'])->name('kebabShops.store');
     Route::resource('shops', KebabShopsController::class);
+    Route::resource('products', ProductsController::class);
 });
 
 Route::get('/logout', function () {
