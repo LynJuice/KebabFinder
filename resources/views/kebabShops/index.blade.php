@@ -20,7 +20,7 @@
 
 <div class="card">
     <h5 class="card-header">Table Basic</h5>
-    <div class="table-responsive text-nowrap">
+    <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>

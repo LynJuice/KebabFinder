@@ -23,8 +23,19 @@ class KebabShopsController extends Controller
      */
     public function index()
     {
-        $kebab_list = KebabShops::all();
+        // $user = User::find(Auth::user()->id)->with('permissions')->get();
+        $user = User::with("roles")->find(Auth::user()->id);
+        // dd($user->hasRole("administratorius"));
+        if ($user->hasRole('svetaines administratorius')) {
+            $kebab_list = KebabShops::all();
+        }
+
+        else {
+            // $kebab_list = KebabShops::where('user_id', Auth::user()->id)->get();
+            $kebab_list = $user->kebabShops;
+        }
         return view('kebabShops.index', compact("kebab_list"));
+
     }
 
     /**
