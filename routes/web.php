@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
     // Route::post('/kebabStore', [KebabShopsController::class, 'store'])->name('kebabShops.store');
     Route::resource('shops', KebabShopsController::class);
     Route::resource('products', ProductsController::class);
-    Route::resource('kebab', KebabShopsController::class);
+    // Route::resource('kebab', KebabShopsController::class);
     Route::get('/table', [KebabShopsController::class, "table"])->name('table');
 });
 

@@ -78,9 +78,9 @@
       <!-- Database -->
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Database</span></li>
       <li class="menu-item">
-        <a href="#" class="menu-link">
+        <a href="{{ route('shops.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-crown"></i>
-          <div data-i18n="Tables">Kebabines</div>
+          <div data-i18n="Tables">Kebabinės</div>
         </a>
       </li>
       <li class="menu-item">
@@ -91,3 +91,4 @@
       </li>
     </ul>
   </aside>
+ 
