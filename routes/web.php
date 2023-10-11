@@ -30,9 +30,6 @@ Route::get('/', [HomeController::class, "index"])->name('index');
 // Route::resource('kebabShop', 'App\Http\Controllers\KebabShop');
 
 Route::resource('reviews', ReviewsController::class);
-Route::get('/admin', function () {
-    return view('admin');
-})->name('admin');
 
 // Route::get('/table', function () {
 //     return view('table');
@@ -52,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('products', ProductsController::class);
     // Route::resource('kebab', KebabShopsController::class);
     Route::get('/table', [KebabShopsController::class, "table"])->name('table');
+    Route::get('/admin', function () {return view('admin');})->name('admin');
 });
 
 Route::get('/logout', function () {

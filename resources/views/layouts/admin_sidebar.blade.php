@@ -83,12 +83,14 @@
           <div data-i18n="Tables">Kebabinės</div>
         </a>
       </li>
+      @if (Auth::user()->hasRole('svetaines administratorius'))
       <li class="menu-item">
         <a href="#" class="menu-link">
           <i class="menu-icon tf-icons bx bx-table"></i>
           <div data-i18n="Tables">Vartotojai</div>
         </a>
       </li>
+      @endif
     </ul>
   </aside>
  

@@ -38,19 +38,13 @@
                 <tr>
                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $kebab->name }}</strong></td>
                     <td>{{ $kebab->description }}</td>
-                    <td>
-                        {{ $kebab->address }}
-                    </td>
+                    <td>{{ $kebab->address }}</td>
                     <td><span class="badge bg-label-primary me-1">{{ $kebab->phone }}</span></td>
-                    <td>
-                        {{ $kebab->open_time }}
-                    </td>
-                    <td>
-                        {{ $kebab->close_time }}
-                    </td>
-                    <td>
+                    <td>{{ $kebab->open_time }}</td>
+                    <td>{{ $kebab->close_time }}</td>
+                    <!-- <td> -->
                             <!-- ??? -->
-                    </td>
+                    <!-- </td> -->
                     <td>
                     <div class="dropdown">
                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>

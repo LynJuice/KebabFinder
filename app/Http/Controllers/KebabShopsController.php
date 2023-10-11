@@ -28,14 +28,15 @@ class KebabShopsController extends Controller
         // dd($user->hasRole("administratorius"));
         if ($user->hasRole('svetaines administratorius')) {
             $kebab_list = KebabShops::all();
-        }
-
-        else {
+        } else if ($user->hasRole('kebabines administratorius')) { //>hasRole('kebabines administratorius'))
             // $kebab_list = KebabShops::where('user_id', Auth::user()->id)->get();
             $kebab_list = $user->kebabShops;
         }
+        else
+        {
+            abort(403);
+        }
         return view('kebabShops.index', compact("kebab_list"));
-
     }
 
     /**
@@ -44,11 +45,11 @@ class KebabShopsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function table()
-     {
+    public function table()
+    {
         $kebab_list = KebabShops::all();
         return view('table', compact("kebab_list"));
-     }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -99,7 +100,7 @@ class KebabShopsController extends Controller
      */
     public function edit(KebabShops $kebabShop)
     {
-        return view('kebab.edit',compact('kebab'));
+        return view('kebab.edit', compact('kebab'));
     }
 
     /**
@@ -118,11 +119,11 @@ class KebabShopsController extends Controller
             'close_time' => 'required',
             'image' => '',
         ]);
-        
+
         $kebabShop->update($request->all());
-        
+
         return redirect()->route('table')
-                        ->with('success','KebabShop updated successfully');
+            ->with('success', 'KebabShop updated successfully');
     }
 
     /**
@@ -135,7 +136,7 @@ class KebabShopsController extends Controller
         }
         // dd($kebab->delete());
         $kebab->delete();
-         
-        return redirect()->route('table')->with('success','KebabShop deleted successfully'); 
+
+        return redirect()->route('table')->with('success', 'KebabShop deleted successfully');
     }
 }
