@@ -90,7 +90,7 @@ class KebabShopsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(KebabShops $kebabShop)
+    public function show(KebabShops $shop)
     {
         return view('kebabShops.show', compact('kebab'));
     }
@@ -98,7 +98,7 @@ class KebabShopsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(KebabShops $kebabShop)
+    public function edit(KebabShops $shop)
     {
         return view('kebab.edit', compact('kebab'));
     }
@@ -106,7 +106,7 @@ class KebabShopsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateKebabShopsRequest $request, KebabShops $kebabShop)
+    public function update(UpdateKebabShopsRequest $request, KebabShops $shop)
     {
         $request->validate([
             'name' => 'required',
@@ -120,7 +120,7 @@ class KebabShopsController extends Controller
             'image' => '',
         ]);
 
-        $kebabShop->update($request->all());
+        $shop->update($request->all());
 
         return redirect()->route('table')
             ->with('success', 'KebabShop updated successfully');
@@ -129,14 +129,19 @@ class KebabShopsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KebabShops $kebab)
+    public function destroy(KebabShops $shop)
     {
-        if (User::find(Auth::user()->id)->cannot('delete', $kebab)) {
+        if (User::find(Auth::user()->id)->cannot('delete', $shop)) {
             abort(403);
         }
-        // dd($kebab->delete());
-        $kebab->delete();
 
-        return redirect()->route('table')->with('success', 'KebabShop deleted successfully');
+        // dd($shop->shopProducts()->get());
+        $shop->shopProducts()->get()->each(function ($product) {
+            $product->reviews()->delete();
+        });
+        $shop->shopProducts()->delete();
+        $shop->delete();
+
+        return redirect()->route('shops.index')->with('success', 'KebabShop deleted successfully');
     }
 }

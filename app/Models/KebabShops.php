@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class KebabShops extends Model
 {
@@ -33,5 +35,15 @@ class KebabShops extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function shopProducts(): HasMany
+    {
+        return $this->hasMany(KebabProduct::class);
+    }
+
+    public function reviews(): HasManyThrough
+    {
+        return $this->hasMany(Reviews::class);
     }
 }

@@ -32,6 +32,19 @@ class KebabShopsFactory extends Factory
         ];
 
         $kebab_nr = fake()->numberBetween(0, count($kebab) - 1);
+
+        //gerate open and close times in such a way that it doesnt close before it opens
+        
+        $open_time = fake()->time($format = 'H:i', $max = 'now');
+        $close_time = fake()->time($format = 'H:i', $max = 'now');
+        
+        // compare the times
+        if ($open_time > $close_time) {
+            // if open time is bigger than close time, swap them
+            $temp = $open_time;
+            $open_time = $close_time;
+            $close_time = $temp;
+        }
        // User::whereHas("roles", function($q){ $q->where("name", "kebabines administratorius"); })->get()->random()->id;
         return [
            // 'user_id' => $this->faker->numberBetween(1, 10),
@@ -47,8 +60,9 @@ class KebabShopsFactory extends Factory
             // 'longitude' => $this->faker->longitude,
             'phone' => $this->faker->phoneNumber,
             'is_open' => $this->faker->boolean,
-            'open_time' => $this->faker->time,
-            'close_time' => $this->faker->time,
+            'open_time' => $open_time,
+            'close_time' => $close_time,
+
             'image' => "/img/kebabshops/kebabshop-" . fake()->numberBetween(1, 10) . ".jpg",
             // 'image' => $this->faker->imageUrl,
         ];

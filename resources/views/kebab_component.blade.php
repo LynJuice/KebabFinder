@@ -6,13 +6,13 @@
     <td>{{ $kebab->open_time }}</td>
     <td>{{ $kebab->close_time }}</td>
     <td>
-        <form action="{{ route('kebab.destroy', $kebab) }}" method="POST">
+        <form action="{{ route('shops.destroy', $kebab) }}" method="POST">
             @csrf
             @method('DELETE')
 
-            <a class="btn btn-info" href="{{ route('kebab.show', $kebab->id) }}">Show</a>
+            <a class="btn btn-info" href="{{ route('shops.show', $kebab) }}">Show</a>
 
-            <a class="btn btn-primary" href="{{ route('kebab.edit', $kebab->id) }}">Edit</a>
+            <a class="btn btn-primary" href="{{ route('shops.edit', $kebab) }}">Edit</a>
 
 
             <button type="submit" class="btn btn-danger">Delete</button>
