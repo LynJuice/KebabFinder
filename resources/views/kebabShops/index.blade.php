@@ -19,7 +19,148 @@
 
 
 <div class="card">
-    <h5 class="card-header">Table Basic</h5>
+    <h5 class="card-header">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCenter">
+            Pridėti kebabinę
+        </button>
+        <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCenterTitle">Pridėti kebabinę</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{route('shops.store')}}" method="post">
+                        @csrf
+
+                        <div class="modal-body">
+                            <label for="name">Pavadinimas:</label>
+                            <input class="form-control" type="text" name="name" value="{{ old('name') }}"><br>
+                            @error('name')
+                            <small>{{$message}}</small><br>
+                            @enderror
+
+                            <label for="description">Aprašymas:</label>
+                            <input class="form-control" type="text" name="description" value="{{ old('description') }}"><br>
+
+                            <label for="address">Adresas:</label>
+                            <input class="form-control" type="text" name="address" value="{{ old('address') }}"><br>
+                            @error('address')
+                            <small>{{$message}}</small><br>
+                            @enderror
+
+                            <label for="latitude">Latitude:</label>
+                            <input class="form-control" type="text" name="latitude" value="{{ old('latitude') }}"><br>
+                            @error('latitude')
+                            <small>{{$message}}</small><br>
+                            @enderror
+
+                            <label for="longitude">Longitude:</label>
+                            <input class="form-control" type="text" name="longitude" value="{{ old('longitude') }}"><br>
+                            @error('longitude')
+                            <small>{{$message}}</small><br>
+                            @enderror
+
+                            <label for="phone">Telefonas:</label>
+                            <input class="form-control" type="text" name="phone" value="{{ old('phone') }}"><br>
+                            @error('phone')
+                            <small>{{$message}}</small><br>
+                            @enderror
+
+                            <!-- <label for="is_open">Is Open:</label> -->
+                            <!-- <input class="form-control" type="checkbox" name="is_open" {{ old('is_open') ? 'checked' : '' }}><br> -->
+
+                            <label for="open_time">Atidarymo laikas:</label>
+                            <input class="form-control" type="text" name="open_time" value="{{ old('open_time') }}"><br>
+                            @error('open_time')
+                            <small>{{$message}}</small><br>
+                            @enderror
+
+                            <label for="close_time">Uždarymo laikas:</label>
+                            <input class="form-control" class="form-control" type="text" name="close_time" value="{{ old('close_time') }}"><br>
+                            @error('close_time')
+                            <small>{{$message}}</small><br>
+                            @enderror
+
+                            <label for="image">Image:</label>
+                            <input type="text" name="image" value="{{ old('image') }}"><br>
+
+
+
+                            <!-- <div class="row">
+                                <div class="col mb-3">
+                                    <input type="text" id="nameWithTitle" class="form-control" placeholder="Pavadinimas">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <input type="text" id="nameWithTitle" class="form-control" placeholder="Aprašas">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <input type="text" id="nameWithTitle" class="form-control" placeholder="Adresas">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <input type="text" id="nameWithTitle" class="form-control" placeholder="Telefonas">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <input type="text" id="nameWithTitle" class="form-control" placeholder="Atidarymo Laikas">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <input type="text" id="nameWithTitle" class="form-control" placeholder="Uždarymo Laikas">
+                                </div>
+                            </div> -->
+                            <!-- <div class="row g-2">
+                                <div class="col mb-0">
+                                    <input type="email" id="emailWithTitle" class="form-control" placeholder="xxxx@xxx.xx">
+                                </div>
+                                <div class="col mb-0">
+                                    <label for="dobWithTitle" class="form-label">DOB</label>
+                                    <input type="date" id="dobWithTitle" class="form-control">
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                            <button type="submit" class="btn btn-primary" value="Submit">Pridėti</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- <button class="btn btn-primary" id="openModalButton">Pridėti</button> -->
+    </h5>
+    <!-- <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+            <p>This is a modal dialog.</p>
+        </div>
+    </div> -->
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -64,9 +205,67 @@
 </div>
 @endsection
 
+
 @section('styles')
+<style>
+    /* .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1;
+    }
+
+    .modal-content {
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        cursor: pointer;
+    } */
+</style>
 @endsection
 
 @section('scripts')
+<script>
+    // function setallert() {
+    //     alert("Hello! I am an alert box!");
+    // }
+    // const openModalButton = document.getElementById("openModalButton");
+    // const modal = document.getElementById("modal");
+    // const closeModal = document.getElementById("closeModal");
+
+    // openModalButton.addEventListener("click", function() {
+    //     modal.style.display = "block";
+    // });
+
+    // closeModal.addEventListener("click", function() {
+    //     modal.style.display = "none";
+    // });
+
+    // // Close the modal if the user clicks outside of it
+    // window.addEventListener("click", function(event) {
+    //     if (event.target == modal) {
+    //         modal.style.display = "none";
+    //     }
+    // });
+</script>
+
+
+
+
 
 @endsection
