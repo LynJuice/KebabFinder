@@ -20,10 +20,18 @@
 
 <div class="card">
     <h5 class="card-header">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCenter">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreate">
             Pridėti kebabinę
         </button>
-        <div class="modal fade" id="modalCenter" tabindex="-1" style="display: none;" aria-hidden="true">
+        @if ($errors->any())
+        <script>
+            window.onload = () => {
+                const myModal = new bootstrap.Modal('#modalCreate');
+                myModal.show();
+            }
+        </script>
+        @endif
+        <div class="modal fade" id="modalCreate" tabindex="-1" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -35,34 +43,34 @@
 
                         <div class="modal-body">
                             <label for="name">Pavadinimas:</label>
-                            <input class="form-control" type="text" name="name" value="{{ old('name') }}"><br>
+                            <input class="form-control" type="text" name="name" value="{{ old('name') }}">
                             @error('name')
                             <small>{{$message}}</small><br>
                             @enderror
 
-                            <label for="description">Aprašymas:</label>
-                            <input class="form-control" type="text" name="description" value="{{ old('description') }}"><br>
+                            <br><label for="description">Aprašymas:</label>
+                            <input class="form-control" type="text" name="description" value="{{ old('description') }}">
 
-                            <label for="address">Adresas:</label>
-                            <input class="form-control" type="text" name="address" value="{{ old('address') }}"><br>
+                            <br><label for="address">Adresas:</label>
+                            <input class="form-control" type="text" name="address" value="{{ old('address') }}">
                             @error('address')
                             <small>{{$message}}</small><br>
                             @enderror
 
-                            <label for="latitude">Latitude:</label>
-                            <input class="form-control" type="text" name="latitude" value="{{ old('latitude') }}"><br>
+                            <br><label for="latitude">Latitude:</label>
+                            <input class="form-control" type="text" name="latitude" value="{{ old('latitude') }}">
                             @error('latitude')
                             <small>{{$message}}</small><br>
                             @enderror
 
-                            <label for="longitude">Longitude:</label>
-                            <input class="form-control" type="text" name="longitude" value="{{ old('longitude') }}"><br>
+                            <br><label for="longitude">Longitude:</label>
+                            <input class="form-control" type="text" name="longitude" value="{{ old('longitude') }}">
                             @error('longitude')
                             <small>{{$message}}</small><br>
                             @enderror
 
-                            <label for="phone">Telefonas:</label>
-                            <input class="form-control" type="text" name="phone" value="{{ old('phone') }}"><br>
+                            <br><label for="phone">Telefonas:</label>
+                            <input class="form-control" type="text" name="phone" value="{{ old('phone') }}">
                             @error('phone')
                             <small>{{$message}}</small><br>
                             @enderror
@@ -70,20 +78,20 @@
                             <!-- <label for="is_open">Is Open:</label> -->
                             <!-- <input class="form-control" type="checkbox" name="is_open" {{ old('is_open') ? 'checked' : '' }}><br> -->
 
-                            <label for="open_time">Atidarymo laikas:</label>
-                            <input class="form-control" type="text" name="open_time" value="{{ old('open_time') }}"><br>
+                            <br><label for="open_time">Atidarymo laikas:</label>
+                            <input class="form-control" type="text" name="open_time" value="{{ old('open_time') }}">
                             @error('open_time')
                             <small>{{$message}}</small><br>
                             @enderror
 
-                            <label for="close_time">Uždarymo laikas:</label>
-                            <input class="form-control" class="form-control" type="text" name="close_time" value="{{ old('close_time') }}"><br>
+                            <br><label for="close_time">Uždarymo laikas:</label>
+                            <input class="form-control" class="form-control" type="text" name="close_time" value="{{ old('close_time') }}">
                             @error('close_time')
                             <small>{{$message}}</small><br>
                             @enderror
 
-                            <label for="image">Image:</label>
-                            <input type="text" name="image" value="{{ old('image') }}"><br>
+                            <br><label for="image">Image:</label>
+                            <input type="text" name="image" value="{{ old('image') }}">
 
 
 
@@ -192,7 +200,7 @@
                                 <form method="POST" action="{{route('shops.destroy', $kebab) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="dropdown-item" type="submit"> <i class="bx bx-trash me-1"></i>  Trinti</button>
+                                    <button class="dropdown-item" type="submit"> <i class="bx bx-trash me-1"></i> Trinti</button>
                                 </form>
                             </div>
                         </div>
