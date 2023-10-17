@@ -90,6 +90,12 @@
           <div data-i18n="Tables">Vartotojai</div>
         </a>
       </li>
+      <li class="menu-item">
+      <a href="{{ route('products.index') }}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-basket"></i>
+          <div data-i18n="Tables">Produktai</div>
+        </a>
+      </li>
       @endif
     </ul>
   </aside>
