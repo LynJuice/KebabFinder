@@ -14,7 +14,8 @@ class KebabProductController extends Controller
      */
     public function index()
     {
-        //
+        $kebabProducts = KebabProduct::all();
+        return view("products.index", compact("kebabProducts"));
     }
 
     /**
