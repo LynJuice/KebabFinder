@@ -125,9 +125,8 @@
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void();"><i class="bx bx-edit-alt me-1"></i> Keisti</a>
-
-                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" data-link-delete="{{route('shops.destroy', $kebab) }}"><i class="bx bx-trash me-1"></i> Trinti</button>
+                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-link-edit="{{route('shops.destroy', $kebab) }}"> <i class="bx bx-edit-alt me-1"></i> Keisti</a></button>
+                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal" data-link-delete="{{route('shops.destroy', $kebab) }}"><i class="bx bx-trash me-1"></i> Trinti</button>
                             </div>
                         </div>
                     </td>
@@ -139,25 +138,92 @@
 </div>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <div class="text-center modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">Ar tikrai norite ištrinti?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
-            </div>
-            <div class="modal-body">
-                <p>Ar jūs isitikine kad norite ištrinti šia kebabine?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ne</button>
                 <form id='confirmDelete' method="POST" action="">
                     @csrf
                     @method('DELETE')
-                    <button class="dropdown-item" type="submit"> <i class="bx bx-trash me-1"></i> Taip</button>
+                    <button class="btn btn-danger"" type=" submit"> <i class="bx bx-trash me-1"></i> Taip</button>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="EditModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-center modal-header">
+                <h5 class="modal-title text-center" id="EditModelLabel">Kebabines informacijos keitimas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+
+            <form action="{{route('shops.update')}}" method="post">
+                @csrf
+
+                <div class="modal-body">
+                    <label for="name">Pavadinimas:</label>
+                    <input class="form-control" type="text" name="name" value="{{ old('name') }}">
+                    @error('name')
+                    <small>{{$message}}</small><br>
+                    @enderror
+
+                    <br><label for="description">Aprašymas:</label>
+                    <input class="form-control" type="text" name="description" value="{{ old('description') }}">
+
+                    <br><label for="address">Adresas:</label>
+                    <input class="form-control" type="text" name="address" value="{{ old('address') }}">
+                    @error('address')
+                    <small>{{$message}}</small><br>
+                    @enderror
+
+                    <br><label for="latitude">Latitude:</label>
+                    <input class="form-control" type="text" name="latitude" value="{{ old('latitude') }}">
+                    @error('latitude')
+                    <small>{{$message}}</small><br>
+                    @enderror
+
+                    <br><label for="longitude">Longitude:</label>
+                    <input class="form-control" type="text" name="longitude" value="{{ old('longitude') }}">
+                    @error('longitude')
+                    <small>{{$message}}</small><br>
+                    @enderror
+
+                    <br><label for="phone">Telefonas:</label>
+                    <input class="form-control" type="text" name="phone" value="{{ old('phone') }}">
+                    @error('phone')
+                    <small>{{$message}}</small><br>
+                    @enderror
+                    <label for="open_time">Atidarymo laikas:</label>
+                    <input class="form-control" type="text" name="open_time" value="{{ old('open_time') }}"><br>
+                    @error('open_time')
+                    <small>{{$message}}</small><br>
+                    @enderror
+
+                    <br><label for="close_time">Uždarymo laikas:</label>
+                    <input class="form-control" class="form-control" type="text" name="close_time" value="{{ old('close_time') }}">
+                    @error('close_time')
+                    <small>{{$message}}</small><br>
+                    @enderror
+
+                    <label for="image">Image:</label>
+                    <input type="text" name="image" value="{{ old('image') }}"><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Uždaryti</button>
+                    <button type="submit" class="btn btn-primary" value="Submit">Pridėti</button>
+
+                </div>
+            </form> 
         </div>
     </div>
 </div>
@@ -169,8 +235,16 @@
 
 @section('scripts')
 <script>
-    const modal = document.getElementById('exampleModal');
-    modal.addEventListener('show.bs.modal', function(event) {
+    const modalDelete = document.getElementById('deleteModal');
+    modalDelete.addEventListener('show.bs.modal', function(event) {
+        const button = event.relatedTarget;
+        const link = button.dataset.linkDelete;
+        const confirmDelete = document.getElementById("confirmDelete");
+        confirmDelete.setAttribute('action', link);
+    });
+
+    const modalEdit = document.getElementById('editModal');
+    modalEdit.addEventListener('show.bs.modal', function(event) {
         const button = event.relatedTarget;
         const link = button.dataset.linkDelete;
         const confirmDelete = document.getElementById("confirmDelete");
