@@ -813,7 +813,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Book A Table</h2>
+          <a href="{{ Route('login') }}"><h2>Login</h2></a>
           <p>Book <span>Your Stay</span> With Us</p>
         </div>
 
