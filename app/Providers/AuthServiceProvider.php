@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
+use App\Models\KebabShops;
+use App\Policies\KebabShopsPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +16,13 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
+        // 'App\Models\KebabShops' => 'App\Policies\KebabShopsPolicy',
+        // 'App\Models\KebabProduct' => 'App\Policies\KebabProductPolicy',
+        // 'App\Models\Reviews' => 'App\Policies\ReviewsPolicy',
+        // 'App\Models\User' => 'App\Polic ies\UserPolicy',
+
+        KebabShops::class => KebabShopsPolicy::class,
+
     ];
 
     /**

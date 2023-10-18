@@ -92,7 +92,7 @@ class KebabShopsController extends Controller
      */
     public function show(KebabShops $shop)
     {
-        return view('kebabShops.show', compact('kebab'));
+        return view('kebabShops.show', compact('shop'));
     }
 
     /**
@@ -100,7 +100,7 @@ class KebabShopsController extends Controller
      */
     public function edit(KebabShops $shop)
     {
-        return view('kebab.edit', compact('kebab'));
+        return view('kebab.edit', compact('shop'));
     }
 
     /**
@@ -108,22 +108,23 @@ class KebabShopsController extends Controller
      */
     public function update(UpdateKebabShopsRequest $request, KebabShops $shop)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => '',
-            'address' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
-            'phone' => 'required',
-            'open_time' => 'required',
-            'close_time' => 'required',
-            'image' => '',
-        ]);
+        if (User::find(Auth::user()->id)->cannot('update', $shop)) {
+            abort(403);
+        }
+        $kebab_shop_info = $request->validated();
+        $shop->name = $kebab_shop_info['name'];
+        $shop->description = $kebab_shop_info['description'];
+        $shop->address = $kebab_shop_info['address'];
+        $shop->latitude = $kebab_shop_info['latitude'];
+        $shop->longitude = $kebab_shop_info['longitude'];
+        $shop->phone = $kebab_shop_info['phone'];
+        $shop->open_time = $kebab_shop_info['open_time'];
+        $shop->close_time = $kebab_shop_info['close_time'];
+        $shop->image = $kebab_shop_info['image'];
 
-        $shop->update($request->all());
+        $shop->save();
 
-        return redirect()->route('table')
-            ->with('success', 'KebabShop updated successfully');
+        return redirect()->route('shops.index')->with('success', 'Kebabine sėkmingai atnaujinta');
     }
 
     /**
@@ -135,6 +136,9 @@ class KebabShopsController extends Controller
             abort(403);
         }
 
+        $shop_title = $shop->name;
+        $shop_title . " deleted successfully";
+
         // dd($shop->shopProducts()->get());
         $shop->shopProducts()->get()->each(function ($product) {
             $product->reviews()->delete();
@@ -142,6 +146,6 @@ class KebabShopsController extends Controller
         $shop->shopProducts()->delete();
         $shop->delete();
 
-        return redirect()->route('shops.index')->with('success', 'KebabShop deleted successfully');
+        return redirect()->route('shops.index')->with('success', $shop_title);
     }
 }

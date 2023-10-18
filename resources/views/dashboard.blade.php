@@ -19,8 +19,10 @@
         <button type="button" class="btn btn-primary">Prideti nauja kebabine</button>
         <button type="button" class="btn btn-danger">Prideti Naikinti kebabine</button>
     </div>
-    @else
+    @elseif (Auth::user()->hasRole('svetaines administratorius'))
     <!-- Cia bus userio vaizdas -->
+    <p>svetaines admin</p>
+    @else
     <p>user</p>
     @endif
 

@@ -113,20 +113,20 @@
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-                @foreach ($kebab_list as $kebab)
+                @foreach ($kebab_list as $shop)
                 <tr>
-                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $kebab->name }}</strong></td>
-                    <td>{{ $kebab->description }}</td>
-                    <td>{{ $kebab->address }}</td>
-                    <td><span class="badge bg-label-primary me-1">{{ $kebab->phone }}</span></td>
-                    <td>{{ $kebab->open_time }}</td>
-                    <td>{{ $kebab->close_time }}</td>
+                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $shop->name }}</strong></td>
+                    <td>{{ $shop->description }}</td>
+                    <td>{{ $shop->address }}</td>
+                    <td><span class="badge bg-label-primary me-1">{{ $shop->phone }}</span></td>
+                    <td>{{ $shop->open_time }}</td>
+                    <td>{{ $shop->close_time }}</td>
                     <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
-                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-link-edit="{{route('shops.destroy', $kebab) }}"> <i class="bx bx-edit-alt me-1"></i> Keisti</a></button>
-                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal" data-link-delete="{{route('shops.destroy', $kebab) }}"><i class="bx bx-trash me-1"></i> Trinti</button>
+                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-link-edit="{{route('shops.update', $shop) }}"> <i class="bx bx-edit-alt me-1"></i> Keisti</a></button>
+                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal" data-link-delete="{{route('shops.destroy', $shop) }}"><i class="bx bx-trash me-1"></i> Trinti</button>
                             </div>
                         </div>
                     </td>
@@ -167,8 +167,9 @@
                 </button>
             </div>
 
-            <form action="{{route('shops.update')}}" method="post">
+            <form id='editInformation' action="" method="POST">
                 @csrf
+                @method('PUT')
 
                 <div class="modal-body">
                     <label for="name">Pavadinimas:</label>
@@ -223,7 +224,7 @@
                     <button type="submit" class="btn btn-primary" value="Submit">Pridėti</button>
 
                 </div>
-            </form> 
+            </form>
         </div>
     </div>
 </div>
@@ -246,8 +247,9 @@
     const modalEdit = document.getElementById('editModal');
     modalEdit.addEventListener('show.bs.modal', function(event) {
         const button = event.relatedTarget;
-        const link = button.dataset.linkDelete;
-        const confirmDelete = document.getElementById("confirmDelete");
+        const link = button.dataset.linkEdit;
+        console.log(link);
+        const confirmDelete = document.getElementById("editInformation");
         confirmDelete.setAttribute('action', link);
     });
 </script>

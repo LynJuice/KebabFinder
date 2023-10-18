@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateKebabShopsRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class UpdateKebabShopsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +24,15 @@ class UpdateKebabShopsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'description' => '',
+            'address' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'phone' => 'required',
+            'open_time' => 'required',
+            'close_time' => 'required',
+            'image' => '',
         ];
     }
 }
