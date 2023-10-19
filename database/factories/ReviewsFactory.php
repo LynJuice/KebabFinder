@@ -18,9 +18,11 @@ class ReviewsFactory extends Factory
      */
     public function definition(): array
     {
+        $kebab_shop_product = KebabProduct::all()->random();
         return [
             'user_id' => User::whereHas("roles", function($q){ $q->where("name", "vartotojas"); })->get()->random()->id,
-            'kebab_product_id' => KebabProduct::all()->random()->id,
+            'kebab_shop_id' => $kebab_shop_product->kebab_shops_id,
+            'product_id' => $kebab_shop_product->products_id,
             'komentaras' => $this->faker->text(100),
             'reitingas' => $this->faker->numberBetween(1, 5), 
         ];

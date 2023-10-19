@@ -3,6 +3,7 @@
 @section('title', 'KebabShop Table')
 
 @section('content')
+
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
@@ -117,7 +118,7 @@
                 <tr>
                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $shop->name }}</strong></td>
                     <td>{{ $shop->description }}</td>
-                    <td>{{ $shop->address }}</td>                                                                
+                    <td>{{ $shop->address }}</td>
                     <td><span class="badge bg-label-primary me-1">{{ $shop->phone }}</span></td>
                     <td>{{ $shop->open_time }}</td>
                     <td>{{ $shop->close_time }}</td>
@@ -125,6 +126,7 @@
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
+                                <button type="button" class="dropdown-item"><i class='bx bxs-cat bx-rotate-180' ></i> Produktai</button>
                                 <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-name="{{ $shop->name }}" data-description="{{ $shop->description }}" data-address="{{ $shop->address }}" data-latitude="{{ $shop->latitude }}" data-longitude="{{ $shop->longitude }}" data-phone="{{ $shop->phone }}" data-opentime="{{ $shop->open_time }}" data-closetime="{{ $shop->close_time }}" data-image="{{ $shop->image }}" data-link-edit="{{route('shops.update', $shop) }}"> <i class="bx bx-edit-alt me-1"></i> Keisti</a></button>
                                 <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal" data-link-delete="{{route('shops.destroy', $shop) }}"><i class="bx bx-trash me-1"></i> Trinti</button>
                             </div>

@@ -13,11 +13,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kebab_products', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('kebab_shops_id')->constrained('kebab_shops');
             $table->foreignId('products_id')->constrained('products');
             $table->float('price', 8, 2);
             $table->timestamps();
+            $table->primary(['kebab_shops_id', 'products_id']);
         });
     }
 
