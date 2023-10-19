@@ -117,7 +117,7 @@
                 <tr>
                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $shop->name }}</strong></td>
                     <td>{{ $shop->description }}</td>
-                    <td>{{ $shop->address }}</td>
+                    <td>{{ $shop->address }}</td>                                                                
                     <td><span class="badge bg-label-primary me-1">{{ $shop->phone }}</span></td>
                     <td>{{ $shop->open_time }}</td>
                     <td>{{ $shop->close_time }}</td>
@@ -125,7 +125,7 @@
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
-                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-link-edit="{{route('shops.update', $shop) }}"> <i class="bx bx-edit-alt me-1"></i> Keisti</a></button>
+                                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-name="{{ $shop->name }}" data-description="{{ $shop->description }}" data-address="{{ $shop->address }}" data-latitude="{{ $shop->latitude }}" data-longitude="{{ $shop->longitude }}" data-phone="{{ $shop->phone }}" data-opentime="{{ $shop->open_time }}" data-closetime="{{ $shop->close_time }}" data-image="{{ $shop->image }}" data-link-edit="{{route('shops.update', $shop) }}"> <i class="bx bx-edit-alt me-1"></i> Keisti</a></button>
                                 <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal" data-link-delete="{{route('shops.destroy', $shop) }}"><i class="bx bx-trash me-1"></i> Trinti</button>
                             </div>
                         </div>
@@ -246,11 +246,21 @@
 
     const modalEdit = document.getElementById('editModal');
     modalEdit.addEventListener('show.bs.modal', function(event) {
-        const button = event.relatedTarget;
-        const link = button.dataset.linkEdit;
-        console.log(link);
-        const confirmDelete = document.getElementById("editInformation");
-        confirmDelete.setAttribute('action', link);
+        const data = event.relatedTarget.dataset;
+        document.getElementById("editInformation").setAttribute('action', data.linkEdit);
+
+        const name = data.name;
+        modalEdit.querySelector('.modal-title').textContent = "Kebabines informacijos keitimas: " + name;
+        modalEdit.querySelector('[name="name"]').value = name;
+        modalEdit.querySelector('[name="description"]').value = data.description;
+        modalEdit.querySelector('[name="address"]').value = data.address;
+        modalEdit.querySelector('[name="latitude"]').value = data.latitude;
+        modalEdit.querySelector('[name="longitude"]').value = data.longitude;
+        modalEdit.querySelector('[name="phone"]').value = data.phone;
+        modalEdit.querySelector('[name="open_time"]').value = data.opentime;
+        modalEdit.querySelector('[name="close_time"]').value = data.closetime;
+        modalEdit.querySelector('[name="image"]').value = data.image;
+
     });
 </script>
 @endsection

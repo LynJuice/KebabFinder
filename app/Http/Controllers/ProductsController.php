@@ -6,6 +6,8 @@ use App\Models\Products;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -14,8 +16,15 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::all();
-        return view("products.index", compact("products"));
+        $user = User::with("roles")->find(Auth::user()->id);
+        if ($user->hasRole('svetaines administratorius')) {
+            $products = Products::all();
+        } else if ($user->hasRole('kebabines administratorius')) {
+            $products = $user->products;
+        } else {
+            abort(403);
+        }
+        return view('products.index', compact("products"));
     }
 
     /**

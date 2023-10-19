@@ -26,5 +26,4 @@ class Reviews extends Model
         return $this->belongsTo(KebabProduct::class);
         // return $this->belongsTo(KebabProduct::class, 'kebab_products_id', 'id', 'kebab_products');
     }
-
 }
