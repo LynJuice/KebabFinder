@@ -20,7 +20,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Pavadinimas</th>
                         <th>Atsiliepimai</th>
                         <th>Kebabinės</th>
