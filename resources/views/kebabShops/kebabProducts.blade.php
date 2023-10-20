@@ -3,6 +3,14 @@
 @section('title', 'Kebab Produktai')
 
 @section('content')
+
+{{ $kebab_products }}
+<br>
+<br>
+<br>
+{{ $user_products }}
+
+
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
@@ -26,9 +34,8 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @foreach ($products as $product)
                     <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $product->name }}</strong></td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>NAME HERE</strong></td>
                         <td>
                             <div class="progress mb-3">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100">
@@ -38,9 +45,6 @@
                         </td>
                         <td>
 
-                            @foreach ($product->kebabShops as $kebabShop)
-                            <div> {{ $kebabShop->id }} - {{$kebabShop->name}} </div>
-                            @endforeach
                         </td>
                         <td>
                             <div class="dropdown">
@@ -52,7 +56,6 @@
                             </div>
                         </td>
                     </tr>
-                    @endforeach
                 </tbody>
             </table>
         </div>

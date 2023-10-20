@@ -46,4 +46,6 @@ class KebabShops extends Model
     {
         return $this->hasMany(Reviews::class);
     }
+
+    
 }

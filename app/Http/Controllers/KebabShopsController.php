@@ -31,9 +31,7 @@ class KebabShopsController extends Controller
         } else if ($user->hasRole('kebabines administratorius')) { //>hasRole('kebabines administratorius'))
             // $kebab_list = KebabShops::where('user_id', Auth::user()->id)->get();
             $kebab_list = $user->kebabShops;
-        }
-        else
-        {
+        } else {
             abort(403);
         }
         return view('kebabShops.index', compact("kebab_list"));
@@ -148,4 +146,5 @@ class KebabShopsController extends Controller
 
         return redirect()->route('shops.index')->with('success', $shop_title);
     }
+
 }

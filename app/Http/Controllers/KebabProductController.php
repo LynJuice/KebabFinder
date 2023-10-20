@@ -6,16 +6,19 @@ use App\Models\KebabProduct;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKebab_ProductRequest;
 use App\Http\Requests\UpdateKebab_ProductRequest;
+use App\Models\KebabShops;
 
 class KebabProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(KebabShops $kebabShop)
     {
-        $kebabProducts = KebabProduct::all();
-        return view("products.index", compact("kebabProducts"));
+        $user_products = $kebabShop->user->products;
+        $kebab_products = $kebabShop->products;
+        // dd($kebab_products);
+        return view("kebabShops.kebabProducts", compact("kebab_products", "user_products"));
     }
 
     /**

@@ -41,15 +41,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::resource('products', ProductsController::class);
+    Route::resource('shops', KebabShopsController::class);
+    Route::get('/shops/{kebabShop}/products', [KebabProductController::class, "index"])->name('shops.products.index');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    // Route::get('/kebabAdd', [KebabShopsController::class, 'create'])->name('kebabShops.create');
-    // Route::post('/kebabStore', [KebabShopsController::class, 'store'])->name('kebabShops.store');
-    Route::resource('shops', KebabShopsController::class);
-    // Route::resource('products', KebabProductController::class);
-    Route::resource('products', ProductsController::class);
-    // Route::resource('kebab', KebabShopsController::class);
     Route::get('/table', [KebabShopsController::class, "table"])->name('table');
     Route::get('/admin', function () {return view('admin');})->name('admin');
 });
