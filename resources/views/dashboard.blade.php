@@ -12,9 +12,10 @@
     </x-slot>
 
     @if (Auth::user()->hasRole('kebabines administratorius') || Auth::user()->hasRole('svetaines administratorius'))
-
+    <br>
+    <br>
     <div class="text-center">
-        <a href="/admin">ADMIN</a>
+        <a href="/admin" class="btn btn-primary">Administravimas</a>
     </div>
     @endif
 
