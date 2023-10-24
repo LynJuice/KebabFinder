@@ -5,6 +5,7 @@ namespace App\Policies;
 use Illuminate\Auth\Access\Response;
 use App\Models\Kebab_Product;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class KebabProductPolicy
 {
@@ -29,7 +30,14 @@ class KebabProductPolicy
      */
     public function create(User $user): bool
     {
-        //
+        $user = User::with("roles")->find(Auth::user()->id);
+        if ($user->hasRole('svetaines administratorius')) {
+            return true;
+        } else if ($user->hasRole('kebabines administratorius')) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -37,7 +45,14 @@ class KebabProductPolicy
      */
     public function update(User $user, Kebab_Product $kebabProduct): bool
     {
-        //
+        $user = User::with("roles")->find(Auth::user()->id);
+        if ($user->hasRole('svetaines administratorius')) {
+            return true;
+        } else if ($user->hasRole('kebabines administratorius') && $kebabProduct->kebabShops->user_id == Auth::user()->id) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

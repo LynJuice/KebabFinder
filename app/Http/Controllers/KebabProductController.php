@@ -17,8 +17,9 @@ class KebabProductController extends Controller
     {
         $user_products = $kebabShop->user->products;
         $kebab_products = $kebabShop->products;
-        // dd($kebab_products);
-        return view("kebabShops.kebabProducts", compact("kebab_products", "user_products"));
+        $kebab_info = $kebabShop;
+
+        return view("kebabShops.kebabProducts", compact("kebab_products", "user_products", "kebab_info"));
     }
 
     /**
@@ -34,7 +35,11 @@ class KebabProductController extends Controller
      */
     public function store(StoreKebab_ProductRequest $request)
     {
-        //
+        // save all the new kebab products to the kebab shop
+        $kebabShop = KebabShops::find($request->kebabShop);
+        $kebabShop->products()->sync($request->products);
+
+        return redirect()->route('shops.products.index', $kebabShop);
     }
 
     /**

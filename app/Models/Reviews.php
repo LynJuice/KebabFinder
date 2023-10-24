@@ -21,9 +21,14 @@ class Reviews extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function kebabProduct():BelongsTo
+    public function product():BelongsTo
     {
-        return $this->belongsTo(KebabProduct::class);
-        // return $this->belongsTo(KebabProduct::class, 'kebab_products_id', 'id', 'kebab_products');
+        return $this->belongsTo(Products::class);
     }
+
+    public function shop():BelongsTo
+    {
+        return $this->belongsTo(KebabShops::class);
+    }
+
 }

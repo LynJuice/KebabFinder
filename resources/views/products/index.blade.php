@@ -1,6 +1,6 @@
 @extends('layouts.admin_base')
 
-@section('title', 'Produktai')
+@section('title', 'Vartotojo Produktai')
 
 @section('content')
 <div class="row">
