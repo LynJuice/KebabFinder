@@ -24,14 +24,6 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreate">
             Pridėti kebabinę
         </button>
-        @if ($errors->any())
-        <script>
-            window.onload = () => {
-                const myModal = new bootstrap.Modal('#modalCreate');
-                myModal.show();
-            }
-        </script>
-        @endif
         <div class="modal fade" id="modalCreate" tabindex="-1" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -113,7 +105,7 @@
                     <th> </th>
                 </tr>
             </thead>
-            <tbody class="table-border-bottom-0">
+            <tbody>
                 @foreach ($kebab_list as $shop)
                 <tr>
                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $shop->name }}</strong></td>
@@ -126,7 +118,7 @@
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
-                                <a type="button" class="dropdown-item" href="{{ route('shops.products.index', $shop) }}"><i class='bx bxs-cat bx-rotate-180' ></i> Produktai</a>
+                                <a type="button" class="dropdown-item" href="{{ route('shops.products.index', $shop) }}"><i class='bx bxs-cat bx-rotate-180'></i> Produktai</a>
                                 <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-name="{{ $shop->name }}" data-description="{{ $shop->description }}" data-address="{{ $shop->address }}" data-latitude="{{ $shop->latitude }}" data-longitude="{{ $shop->longitude }}" data-phone="{{ $shop->phone }}" data-opentime="{{ $shop->open_time }}" data-closetime="{{ $shop->close_time }}" data-image="{{ $shop->image }}" data-link-edit="{{route('shops.update', $shop) }}"> <i class="bx bx-edit-alt me-1"></i> Keisti</a></button>
                                 <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal" data-link-delete="{{route('shops.destroy', $shop) }}"><i class="bx bx-trash me-1"></i> Trinti</button>
                             </div>
@@ -138,7 +130,6 @@
         </table>
     </div>
 </div>
-
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -172,6 +163,8 @@
             <form id='editInformation' action="" method="POST">
                 @csrf
                 @method('PUT')
+
+                <input type="hidden" name="id" value="{{ old('id') }}">
 
                 <div class="modal-body">
                     <label for="name">Pavadinimas:</label>
@@ -223,8 +216,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Uždaryti</button>
-                    <button type="submit" class="btn btn-primary" value="Submit">Pridėti</button>
-
+                    <button type="submit" class="btn btn-primary" value="Submit">Keisti</button>
                 </div>
             </form>
         </div>
@@ -262,7 +254,27 @@
         modalEdit.querySelector('[name="open_time"]').value = data.opentime;
         modalEdit.querySelector('[name="close_time"]').value = data.closetime;
         modalEdit.querySelector('[name="image"]').value = data.image;
+        modalEdit.querySelector('[name="id"]').value = data.linkEdit;
 
     });
 </script>
+
+@if ($errors->any())
+@if (old('_method'))
+<script>
+    window.onload = () => {
+        const myModal = new bootstrap.Modal('#editModal'); 
+        document.getElementById("editInformation").setAttribute('action', '{{old("id")}}');   
+        myModal.show();
+    }
+</script>
+@else
+<script>
+    window.onload = () => {
+        const myModal = new bootstrap.Modal('#modalCreate');
+        myModal.show();
+    }
+</script>
+@endif
+@endif
 @endsection

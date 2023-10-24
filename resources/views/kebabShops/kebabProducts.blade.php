@@ -18,6 +18,8 @@
     <h5 class="card-header">
         <div class="table-responsive">
 
+        
+
             <form action="{{ route('shops.products.store', $kebab_info) }}" method="POST">
                 @csrf
                 <table class="table">
@@ -49,8 +51,6 @@
                             </td>
                             <td class="text-center">
                                 <input type="checkbox" name="products[]" value="{{ $product->id }}" @if($kebab_products->contains($product->id)) checked @endif>
-
-
                             </td>
                         </tr>
                         @endforeach

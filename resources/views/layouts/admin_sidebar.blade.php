@@ -69,29 +69,45 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboard -->
-      <li class="menu-item active">
-        <a href="#" class="menu-link">
+      @if(Request::is("admin"))
+      <li  class="menu-item active">
+      @else
+      <li  class="menu-item">
+      @endif
+        <a href="/admin" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
         </a>
       </li>
       <!-- Database -->
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Database</span></li>
-      <li class="menu-item">
+      @if(Request::is("shops/*") || Request::is("shops"))
+      <li  class="menu-item active">
+      @else
+      <li  class="menu-item">
+      @endif
         <a href="{{ route('shops.index') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-crown"></i>
           <div data-i18n="Tables">Kebabinės</div>
         </a>
       </li>
       @if (Auth::user()->hasRole('svetaines administratorius'))
-      <li class="menu-item">
+      @if(Request::is("users/*") || Request::is("users"))
+      <li  class="menu-item active">
+      @else
+      <li  class="menu-item">
+      @endif
         <a href="#" class="menu-link">
           <i class="menu-icon tf-icons bx bx-table"></i>
           <div data-i18n="Tables">Vartotojai</div>
         </a>
       </li>
       @endif
-      <li class="menu-item">
+      @if(Request::is("products/*") || Request::is("products"))
+      <li  class="menu-item active">
+      @else
+      <li  class="menu-item">
+      @endif
       <a href="{{ route('products.index') }}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-basket"></i>
           <div data-i18n="Tables">Produktai</div>

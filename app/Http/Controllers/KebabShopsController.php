@@ -23,13 +23,10 @@ class KebabShopsController extends Controller
      */
     public function index()
     {
-        // $user = User::find(Auth::user()->id)->with('permissions')->get();
         $user = User::with("roles")->find(Auth::user()->id);
-        // dd($user->hasRole("administratorius"));
         if ($user->hasRole('svetaines administratorius')) {
             $kebab_list = KebabShops::all();
-        } else if ($user->hasRole('kebabines administratorius')) { //>hasRole('kebabines administratorius'))
-            // $kebab_list = KebabShops::where('user_id', Auth::user()->id)->get();
+        } else if ($user->hasRole('kebabines administratorius')) {
             $kebab_list = $user->kebabShops;
         } else {
             abort(403);
@@ -54,9 +51,7 @@ class KebabShopsController extends Controller
      */
     public function create()
     {
-        return view('kebabShops.create');
-
-        // validation klaidos
+        // 
     }
 
     /**
@@ -64,25 +59,12 @@ class KebabShopsController extends Controller
      */
     public function store(StoreKebabShopsRequest $request)
     {
-        // dd($request);
         $kebab_shop_info = $request->validated();
         $kebab_shop_info['is_open'] = isset($_POST['is_open']);
         $kebab_shop_info['user_id'] = Auth::user()->id;
-        // dd($kebab_shop_info);
         $new_kebab_shop = KebabShops::create($kebab_shop_info);
-        // peradresuoti i indeksa
-        // dd($new_kebab_shop);
-        // $name = $request->input('name');
-        // $description = $request->input('description');
-        // $address = $request->input('address');
-        // $latitude = $request->input('latitude');
-        // $longitude = $request->input('longitude');
-        // $phone = $request->input('phone');
-        // $is_open = $request->input('is_open');
-        // $open_time = $request->input('open_time');
-        // $close_time = $request->input('close_time');
-        // $image = $request->input('image');
-        return redirect()->route('shops.index')->with('success', 'Kebabine sėkmingai sukurtas');
+
+        return redirect()->route('shops.index')->with('success', $new_kebab_shop->name . ' sėkmingai sukurtas');
     }
 
     /**
@@ -90,7 +72,7 @@ class KebabShopsController extends Controller
      */
     public function show(KebabShops $shop)
     {
-        return view('kebabShops.show', compact('shop'));
+        // 
     }
 
     /**
@@ -98,7 +80,7 @@ class KebabShopsController extends Controller
      */
     public function edit(KebabShops $shop)
     {
-        return view('kebab.edit', compact('shop'));
+        // 
     }
 
     /**
@@ -109,6 +91,7 @@ class KebabShopsController extends Controller
         if (User::find(Auth::user()->id)->cannot('update', $shop)) {
             abort(403);
         }
+
         $kebab_shop_info = $request->validated();
         $shop->name = $kebab_shop_info['name'];
         $shop->description = $kebab_shop_info['description'];
@@ -122,7 +105,7 @@ class KebabShopsController extends Controller
 
         $shop->save();
 
-        return redirect()->route('shops.index')->with('success', 'Kebabine sėkmingai atnaujinta');
+        return redirect()->route('shops.index')->with('success', $shop->name . ' sėkmingai atnaujintas');
     }
 
     /**
@@ -134,17 +117,15 @@ class KebabShopsController extends Controller
             abort(403);
         }
 
-        $shop_title = $shop->name;
-        $shop_title . " deleted successfully";
 
         // dd($shop->shopProducts()->get());
-        $shop->shopProducts()->get()->each(function ($product) {
-            $product->reviews()->delete();
-        });
+
+        // delete reviews
+        $shop->shopReviews()->delete();
         $shop->shopProducts()->delete();
         $shop->delete();
 
-        return redirect()->route('shops.index')->with('success', $shop_title);
+        return redirect()->route('shops.index')->with('success', $shop->name . ' sėkmingai ištrintas');
     }
 
 }

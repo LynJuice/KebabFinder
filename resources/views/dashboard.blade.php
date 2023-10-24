@@ -11,19 +11,11 @@
         </h2>
     </x-slot>
 
-    @if (Auth::user()->hasRole('kebabines administratorius'))
-    <!-- Kebabu adminstaratoriaus dashboard -->
-    <p>kebabu admin</p>
-    <div class="container">
-        <button type="button" class="btn btn-primary">Keisti Kebabiniu informacija</button>
-        <button type="button" class="btn btn-primary">Prideti nauja kebabine</button>
-        <button type="button" class="btn btn-danger">Prideti Naikinti kebabine</button>
+    @if (Auth::user()->hasRole('kebabines administratorius') || Auth::user()->hasRole('svetaines administratorius'))
+
+    <div class="text-center">
+        <a href="/admin">ADMIN</a>
     </div>
-    @elseif (Auth::user()->hasRole('svetaines administratorius'))
-    <!-- Cia bus userio vaizdas -->
-    <p>svetaines admin</p>
-    @else
-    <p>user</p>
     @endif
 
     <div class="py-12">

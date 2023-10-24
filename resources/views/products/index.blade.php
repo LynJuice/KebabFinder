@@ -8,15 +8,38 @@
         <div class="pull-left">
             <h2> Produktai</h2>
         </div>
-        <!-- <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('table') }}"> Back</a>
-        </div> -->
     </div>
 </div>
 
 <div class="card">
     <h5 class="card-header">
         <div class="table-responsive">
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
+                Pridėti produktą
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <table class="table">
                 <thead>
                     <tr>
@@ -62,4 +85,12 @@
 @section('styles')
 @endsection
 @section('scripts')
+<script>
+const modalCreate = document.getElementById('createModal');
+    modalDelete.addEventListener('show.bs.modal', function(event) {
+        const button = event.relatedTarget;
+        const link = button.dataset.linkDelete;
+        const confirmDelete = document.getElementById("confirmCreate");
+    });
+</script>
 @endsection
