@@ -9,7 +9,7 @@ use App\Models\KebabProduct;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Reviews>
  */
-class ReviewsFactory extends Factory
+class ReviewFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -22,9 +22,9 @@ class ReviewsFactory extends Factory
         return [
             'user_id' => User::whereHas("roles", function($q){ $q->where("name", "vartotojas"); })->get()->random()->id,
             'kebab_shop_id' => $kebab_shop_product->kebab_shops_id,
-            'product_id' => $kebab_shop_product->products_id,
-            'komentaras' => $this->faker->text(100),
-            'reitingas' => $this->faker->numberBetween(1, 5), 
+            'product_id' => $kebab_shop_product->product_id,
+            'comment' => $this->faker->text(100),
+            'rating' => $this->faker->numberBetween(1, 5), 
         ];
     }
 }

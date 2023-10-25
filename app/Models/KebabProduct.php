@@ -33,7 +33,7 @@ class KebabProduct extends Model
 
     public function reviews(): HasMany
     {
-        return $this->hasMany(Reviews::class);
+        return $this->hasMany(Review::class);
     }
     
 }

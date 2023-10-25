@@ -30,7 +30,7 @@ class Product extends Model
 
     public function reviews(): HasManyThrough
     {
-        return $this->hasManyThrough(Reviews::class, KebabProduct::class);
+        return $this->hasManyThrough(Review::class, KebabProduct::class);
     }
     
 }

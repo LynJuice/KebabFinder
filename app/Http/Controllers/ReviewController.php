@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reviews;
+use App\Models\Review;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreReviewsRequest;
-use App\Http\Requests\UpdateReviewsRequest;
+use App\Http\Requests\StoreReviewRequest;
+use App\Http\Requests\UpdateReviewRequest;
 
-class ReviewsController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $reviews = Reviews::all();
+        $reviews = Review::all();
         return view('reviews.index', compact('reviews'));
     }
 
@@ -29,7 +29,7 @@ class ReviewsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReviewsRequest $request)
+    public function store(StoreReviewRequest $request)
     {
         //
     }
@@ -37,7 +37,7 @@ class ReviewsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Reviews $reviews)
+    public function show(Review $review)
     {
         //
     }
@@ -45,7 +45,7 @@ class ReviewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Reviews $reviews)
+    public function edit(Review $review)
     {
         //
     }
@@ -53,7 +53,7 @@ class ReviewsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateReviewsRequest $request, Reviews $reviews)
+    public function update(UpdateReviewRequest $request, Review $review)
     {
         //
     }
@@ -61,7 +61,7 @@ class ReviewsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Reviews $reviews)
+    public function destroy(Review $review)
     {
         //
     }

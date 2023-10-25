@@ -4,9 +4,11 @@
     <h3>Vartotojo informacija</h3>
     <p>{{ $review->user }}</p>
     <h3>Kebabinės produkto informacija</h3>
-    <p>{{ $review->kebabProduct }}</p>
+    <p>{{ $review->product }}</p>
     <h3>Kebabinės  informacija</h3>
-    <p>{{ $review->kebabProduct->kebabShops }}</p>
+    <p>{{ $review->shop }}</p> 
+    {{-- 
+    --}}
     <hr>
     
     

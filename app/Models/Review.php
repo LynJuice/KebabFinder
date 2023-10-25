@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Reviews extends Model
+class Review extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -28,7 +28,7 @@ class Reviews extends Model
 
     public function shop():BelongsTo
     {
-        return $this->belongsTo(KebabShops::class);
+        return $this->belongsTo(KebabShops::class, 'kebab_shop_id');
     }
 
 }

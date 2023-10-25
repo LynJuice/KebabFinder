@@ -7,7 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\KebabShops;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ Route::get('/', [HomeController::class, "index"])->name('index');
 // add route to add kebabShop to using resource controller
 // Route::resource('kebabShop', 'App\Http\Controllers\KebabShop');
 
-Route::resource('reviews', ReviewsController::class);
+Route::resource('reviews', ReviewController::class);
 
 // Route::get('/table', function () {
 //     return view('table');

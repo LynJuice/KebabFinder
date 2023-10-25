@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('kebab_shop_id')->references('id')->on('kebab_shops');
             $table->foreignId('product_id')->references('id')->on('products');
-            $table->string('komentaras');
-            $table->integer('reitingas');
+            $table->string('comment');
+            $table->integer('rating');
             $table->timestamps(); 
         
         });
