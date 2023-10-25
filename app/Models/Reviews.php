@@ -23,7 +23,7 @@ class Reviews extends Model
 
     public function product():BelongsTo
     {
-        return $this->belongsTo(Products::class);
+        return $this->belongsTo(Product::class);
     }
 
     public function shop():BelongsTo

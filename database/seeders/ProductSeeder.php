@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\KebabProduct;
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +14,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        Products::factory()->count(200)->create();
+        Product::factory()->count(200)->create();
         // $products = [
         //     [
         //         'name' => 'Produktas 1',

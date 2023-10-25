@@ -14,10 +14,11 @@ return new class extends Migration
     {
         Schema::create('kebab_products', function (Blueprint $table) {
             $table->foreignId('kebab_shops_id')->constrained('kebab_shops');
-            $table->foreignId('products_id')->constrained('products');
+            // $table->foreignId('product_id')->on('products')->refrences('id');
+            $table->foreignId('product_id')->constrained('products');
             $table->float('price', 8, 2)->nullable();
             $table->timestamps();
-            $table->primary(['kebab_shops_id', 'products_id']);
+            $table->primary(['kebab_shops_id', 'product_id']);
         });
     }
 

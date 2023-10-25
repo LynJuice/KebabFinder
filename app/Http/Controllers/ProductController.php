@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
+use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -10,7 +10,7 @@ use App\Models\KebabShops;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class ProductsController extends Controller
     {
         $user = User::with("roles")->find(Auth::user()->id);
         if ($user->hasRole('svetaines administratorius')) {
-            $products = Products::all();
+            $products = Product::all();
         } else if ($user->hasRole('kebabines administratorius')) {
             $products = $user->products;
         } else {
@@ -47,7 +47,7 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Products $product)
+    public function show(Product $product)
     {
         //
     }
@@ -55,7 +55,7 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Products $product)
+    public function edit(Product $product)
     {
         //
     }
@@ -63,7 +63,7 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Products $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
         //
     }
@@ -71,7 +71,7 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Products $product)
+    public function destroy(Product $product)
     {
         //
     }

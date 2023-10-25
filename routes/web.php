@@ -3,7 +3,7 @@
 use App\Http\Controllers\KebabShopsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KebabProductController;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\KebabShops;
 use Illuminate\Support\Facades\Route;
@@ -41,7 +41,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::resource('products', ProductsController::class);
+    Route::resource('products', ProductController::class);
     Route::resource('shops', KebabShopsController::class);
     Route::get('/shops/{kebabShop}/products', [KebabProductController::class, "index"])->name('shops.products.index');
     Route::post('/shops/{kebabShop}/products', [KebabProductController::class, "store"])->name('shops.products.store');
