@@ -115,7 +115,7 @@
                     <td>{{ $shop->open_time }}</td>
                     <td>{{ $shop->close_time }}</td>
                     <td>
-                        <div class="dropdown">
+                        <div class="dropdown position-static">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                             <div class="dropdown-menu">
                                 <a type="button" class="dropdown-item" href="{{ route('shops.products.index', $shop) }}"><i class='bx bxs-cat bx-rotate-180'></i> Produktai</a>
