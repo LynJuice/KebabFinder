@@ -29,9 +29,49 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
+                        <form action="{{route('products.store')}}" method="post">
+                            @csrf
+                            <div class="modal-body">
+                                <label for="name">Pavadinimas</label>
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Pavadinimas">
+                                @error('name')
+                                <small class="text-danger">{{$message}}</small>
+                                @enderror
+
+                                <label for="description">Aprašymas</label>
+                                <input type="text" name="description" class="form-control" id="description" placeholder="Aprašymas">
+                                @error('description')
+                                <small class="text-danger">{{$message}}</small>
+                                @enderror
+
+                                <label for="price">Kaina</label>
+                                <input type="text" name="price" class="form-control" id="price" placeholder="Kaina">
+                                @error('price')
+                                <small class="text-danger">{{$message}}</small>
+                                @enderror
+
+                                <label for="image">Nuotrauka</label>
+                                <input type="text" name="image" class="form-control" id="image" placeholder="Nuotrauka">
+                                @error('image')
+                                <small class="text-danger">{{$message}}</small>
+                                @enderror
+
+                                <label for="kebab_shops_id">Kebabinė</label>
+                                <select name="kebab_shops_id" class="form-control" id="kebab_shops_id">
+                                    {{-- @foreach ($ as $kebabShop)
+                                    <option value="{{$kebabShop->id}}">{{$kebabShop->name}}</option>
+                                    @endforeach --}}
+                                </select>
+
+                                <label for="products_id">Produktas</label>
+                                <select name="products_id" class="form-control" id="products_id">
+                                    @foreach ($products as $product)
+                                    <option value="{{$product->id}}">{{$product->name}}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </form>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Save changes</button>
@@ -86,7 +126,7 @@
 @endsection
 @section('scripts')
 <script>
-const modalCreate = document.getElementById('createModal');
+    const modalCreate = document.getElementById('createModal');
     modalDelete.addEventListener('show.bs.modal', function(event) {
         const button = event.relatedTarget;
         const link = button.dataset.linkDelete;

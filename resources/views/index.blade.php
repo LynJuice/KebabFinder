@@ -47,7 +47,7 @@
               </div>
             </div>
           </div><!-- End Info Item -->
-
+          
           <div class="col-md-6">
             <div class="info-item d-flex align-items-center">
               <i class="icon bi bi-envelope flex-shrink-0"></i>

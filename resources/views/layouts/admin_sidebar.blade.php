@@ -2,7 +2,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="text-center">
       <a href="{{ route('admin')}}" class="app-brand-link">
-        <img src="img/logo.png" alt="Sneat Logo" class="img-fluid" style="width: 75px; height: 50px;">
+        <img src="{{asset('img/logo.png')}}" alt="Sneat Logo" class="img-fluid" style="width: 75px; height: 50px;">
         <span class="app-brand-text demo menu-text fw-bolder ms-1">KebabFinder</span>
       </a>
 
