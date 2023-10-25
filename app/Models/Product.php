@@ -16,6 +16,12 @@ class Product extends Model
     public $timestamps = false;
     protected $fillable = [
         'id',
+        'user_id',
+        'name',
+        'description',
+        'price',
+        'image',
+        'is_available',
     ];
 
     public function kebabShops(): BelongsToMany
@@ -28,9 +34,10 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function reviews(): HasManyThrough
+    public function reviews(): HasMany
     {
-        return $this->hasManyThrough(Review::class, KebabProduct::class);
+        // return $this->hasManyThrough(Review::class, KebabProduct::class);
+        return $this->hasMany(Review::class);
     }
     
 }

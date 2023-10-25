@@ -39,7 +39,7 @@ class KebabProductController extends Controller
         $kebabShop = KebabShops::find($request->kebabShop);
         $kebabShop->products()->sync($request->products);
 
-        return redirect()->route('shops.products.index', $kebabShop);
+        return redirect()->route('shops.index', $kebabShop)->with('success', 'Produktu sėkmingai atnaujintas kebabinėje: ' . $kebabShop->name);
     }
 
     /**

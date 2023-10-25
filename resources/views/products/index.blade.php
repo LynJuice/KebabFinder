@@ -19,12 +19,12 @@
                 Pridėti produktą
             </button>
 
-            <!-- Modal -->
+            <!-- Create -->
             <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="createModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="createModalLabel">Kebabines pridejimas</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -32,49 +32,116 @@
                         <form action="{{route('products.store')}}" method="post">
                             @csrf
                             <div class="modal-body">
-                                <label for="name">Pavadinimas</label>
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Pavadinimas">
+
+                                <br><label for="name">Pavadinimas</label>
+                                <input type="text" name="name" class="form-control" placeholder="Pavadinimas" value="{{ old('name') }}">
                                 @error('name')
-                                <small class="text-danger">{{$message}}</small>
+                                <small>{{$message}}</small><br>
                                 @enderror
 
-                                <label for="description">Aprašymas</label>
-                                <input type="text" name="description" class="form-control" id="description" placeholder="Aprašymas">
+                                <br><label for="description">Aprašymas</label>
+                                <input type="text" name="description" class="form-control" placeholder="Aprašymas" value="{{ old('description') }}">
                                 @error('description')
-                                <small class="text-danger">{{$message}}</small>
+                                <small>{{$message}}</small><br>
                                 @enderror
 
-                                <label for="price">Kaina</label>
-                                <input type="text" name="price" class="form-control" id="price" placeholder="Kaina">
+                                <br><label for="price">Kaina</label>
+                                <input type="text" name="price" class="form-control" placeholder="Kaina" value="{{ old('price') }}">
                                 @error('price')
-                                <small class="text-danger">{{$message}}</small>
+                                <small>{{$message}}</small><br>
                                 @enderror
 
-                                <label for="image">Nuotrauka</label>
-                                <input type="text" name="image" class="form-control" id="image" placeholder="Nuotrauka">
+                                <br><label for="image">Nuotrauka</label>
+                                <input type="text" name="image" class="form-control" placeholder="Nuotrauka" value="{{ old('image') }}">
                                 @error('image')
-                                <small class="text-danger">{{$message}}</small>
+                                <small>{{$message}}</small><br>
                                 @enderror
 
-                                <label for="kebab_shops_id">Kebabinė</label>
-                                <select name="kebab_shops_id" class="form-control" id="kebab_shops_id">
-                                    {{-- @foreach ($ as $kebabShop)
-                                    <option value="{{$kebabShop->id}}">{{$kebabShop->name}}</option>
-                                    @endforeach --}}
-                                </select>
 
-                                <label for="products_id">Produktas</label>
-                                <select name="products_id" class="form-control" id="products_id">
-                                    @foreach ($products as $product)
-                                    <option value="{{$product->id}}">{{$product->name}}</option>
-                                    @endforeach
-                                </select>
 
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" value="Submit">Pridėti</button>
+                            </div>
                         </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Edit -->
+            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Produkto informacijos keitimas</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form id='editInformation' action="" method="post">
+                            @csrf
+                            @method('PUT')
+
+                            <input type="hidden" name="id" value="{{ old('id') }}">
+
+                            <div class="modal-body">
+
+                                <br><label for="name">Pavadinimas</label>
+                                <input type="text" name="name" class="form-control" placeholder="Pavadinimas" value="{{ old('name') }}">
+                                @error('name')
+                                <small>{{$message}}</small><br>
+                                @enderror
+
+                                <br><label for="description">Aprašymas</label>
+                                <input type="text" name="description" class="form-control" placeholder="Aprašymas" value="{{ old('description') }}">
+                                @error('description')
+                                <small>{{$message}}</small><br>
+                                @enderror
+
+                                <br><label for="price">Kaina</label>
+                                <input type="text" name="price" class="form-control" placeholder="Kaina" value="{{ old('price') }}">
+                                @error('price')
+                                <small>{{$message}}</small><br>
+                                @enderror
+
+                                <br><label for="image">Nuotrauka</label>
+                                <input type="text" name="image" class="form-control" placeholder="Nuotrauka" value="{{ old('image') }}">
+                                @error('image')
+                                <small>{{$message}}</small><br>
+                                @enderror
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" value="Submit">Keisti</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delete -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="text-center modal-header">
+                            <h5 class="modal-title text-center" id="deleteModalLabel">Ar tikrai norite ištrinti?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ne</button>
+                            <form id='confirmDelete' method="POST" action="">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger"" type=" submit"> <i class="bx bx-trash me-1"></i> Taip</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -93,11 +160,19 @@
                     <tr>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $product->name }}</strong></td>
                         <td>
+                            @if($product->reviews->count('ratings') == 0)
+                            <p>Nera atsilepimu apie produkta</p>
+                            @else
                             <div class="progress mb-3">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100">
+
+
+
+                                <div class="progress-bar bg-danger" style="width: {{ round($product->reviews->avg('rating')*10) *2 }}%;" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-label"> {{ round($product->reviews->avg('rating') * 10 ) / 10  }} / 5 </div>
                                 </div>
                                 <div class="ms-3"></div>
                             </div>
+                            @endif
                         </td>
                         <td>
 
@@ -109,8 +184,8 @@
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                 <div class="dropdown-menu">
-                                    <button type="button" class="dropdown-item"><i class="bx bx-edit-alt me-1"></i> Keisti</a></button>
-                                    <button type="button" class="dropdown-item"><i class="bx bx-trash me-1"></i> Trinti</button>
+                                    <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-price="{{ $product->price }}" data-image="{{ $product->image }}" data-linkEdit="{{ route('products.update', $product) }}"><i class="bx bx-edit-alt me-1"></i> Keisti</a></button>
+                                    <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal" data-linkDelete="{{ route('products.destroy', $product) }}"><i class="bx bx-trash me-1"></i> Trinti</button>
                                 </div>
                             </div>
                         </td>
@@ -126,11 +201,47 @@
 @endsection
 @section('scripts')
 <script>
-    const modalCreate = document.getElementById('createModal');
+    const modalDelete = document.getElementById('deleteModal');
     modalDelete.addEventListener('show.bs.modal', function(event) {
+        console.log(event.relatedTarget.dataset)
+        const button = event.relatedTarget;
+        const link = button.dataset.linkdelete;
+        const confirmDelete = document.getElementById("confirmDelete");
+        confirmDelete.setAttribute('action', link);
+    });
+
+    const modalCreate = document.getElementById('createModal');
+    modalCreate.addEventListener('show.bs.modal', function(event) {
         const button = event.relatedTarget;
         const link = button.dataset.linkDelete;
-        const confirmDelete = document.getElementById("confirmCreate");
+        const confirmCreate = document.getElementById("confirmCreate");
+    });
+
+    const modaledit = document.getElementById('editModal');
+    modaledit.addEventListener('show.bs.modal', function(event) {
+        const data = event.relatedTarget.dataset;
+        console.log(data);
+        document.getElementById('editInformation').setAttribute('action', data.linkedit);
+
+        const name = data.name;
+        modaledit.querySelector('.modal-title').textContent = 'Keisti ' + name;
+        modaledit.querySelector('[name="name"]').value = name;
+        modaledit.querySelector('[name="description"]').value = data.description;
+        modaledit.querySelector('[name="price"]').value = data.price;
+        modaledit.querySelector('[name="image"]').value = data.image;
     });
 </script>
+@if ($errors->any())
+<script>
+    window.onload = () => {
+        const myModal = new bootstrap.Modal('#createModal');
+        myModal.show();
+    }
+
+    window.onload = () => {
+        const myModal = new bootstrap.Modal('#editModal');
+        myModal.show();
+    }
+</script>
+@endif
 @endsection

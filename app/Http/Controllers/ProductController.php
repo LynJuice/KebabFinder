@@ -41,7 +41,11 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $product_info = $request->validated();
+        $product_info['user_id'] = Auth::user()->id;
+        $product = Product::create($product_info);
+
+        return redirect()->route('products.index')->with('success', 'Produktas pridėtas sėkmingai.');
     }
 
     /**
@@ -57,7 +61,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        
     }
 
     /**
@@ -65,7 +69,15 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product_info = $request->validated();
+        $product->name = $product_info['name'];
+        $product->price = $product_info['price'];
+        $product->description = $product_info['description'];
+        $product->image = $product_info['image'];
+     
+        $product->update($product_info);
+
+        return redirect()->route('products.index')->with('success', $product_info['name'] . ' atnaujintas sėkmingai.');
     }
 
     /**
@@ -73,6 +85,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $productName = $product->name;
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success', $productName . ' ištrintas sėkmingai.');
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreProductRequest extends FormRequest
 {
@@ -11,7 +13,14 @@ class StoreProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        $user = User::with("roles")->find(Auth::user()->id);
+        if ($user->hasRole('svetaines administratorius')) {
+            return true;
+        } else if ($user->hasRole('kebabines administratorius')) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -22,7 +31,10 @@ class StoreProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'description' => '',
+            'price' => 'required',
+            'image' => '',
         ];
     }
 }

@@ -29,7 +29,7 @@ class ProductPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->hasRole('svetaines administratorius') || $user->hasRole('kebabines administratorius');
     }
 
     /**
