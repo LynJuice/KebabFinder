@@ -43,6 +43,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('shops', KebabShopsController::class);
+    Route::get('/users', [ProfileController::class, "index"])->name('users');
     Route::get('/shops/{kebabShop}/products', [KebabProductController::class, "index"])->name('shops.products.index');
     Route::post('/shops/{kebabShop}/products', [KebabProductController::class, "store"])->name('shops.products.store');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

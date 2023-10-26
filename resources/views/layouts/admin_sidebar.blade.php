@@ -49,7 +49,7 @@
       @else
       <li  class="menu-item">
       @endif
-        <a href="#" class="menu-link">
+        <a href="/users" class="menu-link">
           <i class="menu-icon tf-icons bx bx-table"></i>
           <div data-i18n="Tables">Vartotojai</div>
         </a>
