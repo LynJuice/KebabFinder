@@ -69,6 +69,10 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
+        if (User::find(Auth::user()->id)->cannot('update', $product)) {
+            abort(403);
+        }
+
         $product_info = $request->validated();
         $product->name = $product_info['name'];
         $product->price = $product_info['price'];
@@ -85,6 +89,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if (User::find(Auth::user()->id)->cannot('delete', $product)) {
+            abort(403);
+        }
+
         $productName = $product->name;
         $product->delete();
 
