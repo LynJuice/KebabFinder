@@ -32,7 +32,8 @@ class UpdateKebabShopsRequest extends FormRequest
             'phone' => 'required',
             'open_time' => 'required',
             'close_time' => 'required',
-            'image' => '',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'logo' => 'image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 }

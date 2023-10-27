@@ -23,7 +23,8 @@ return new class extends Migration
             $table->boolean('is_open');
             $table->string('open_time');
             $table->string('close_time');
-            $table->string('image');
+            $table->string('image')->nullable();
+            $table->string('logo')->nullable();
         });
     }
 

@@ -21,8 +21,8 @@ class ProductFactory extends Factory
             'user_id' => User::whereHas("roles", function($q){ $q->where("name", "kebabines administratorius"); })->get()->random()->id,
             'name' => $this->faker->sentence(2),
             'description' => $this->faker->paragraph,
-            'price' => $this->faker->randomFloat(2, 10, 1000),
-            'image' => $this->faker->imageUrl,
+            'price' => $this->faker->randomFloat(2, 10, 1000),            
+            'image' => "menu-item-" . fake()->numberBetween(1, 7) . ".png",
             'in_stock' => $this->faker->boolean(80), 
         ];
     }

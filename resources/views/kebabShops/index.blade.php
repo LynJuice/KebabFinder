@@ -31,7 +31,7 @@
                         <h5 class="modal-title" id="modalCenterTitle">Pridėti kebabinę</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{route('shops.store')}}" method="post">
+                    <form action="{{route('shops.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <div class="modal-body">
@@ -79,8 +79,17 @@
                             <small>{{$message}}</small><br>
                             @enderror
 
-                            <label for="image">Image:</label>
-                            <input type="text" name="image" value="{{ old('image') }}"><br>
+                            <br><label for="kebab_image_create" class="form-label">Nuotrauka</label>
+                            <input name="image" class="form-control" type="file" id="kebab_image_create">
+                            @error('image')
+                            <small>{{$message}}</small><br>
+                            @enderror
+
+                            <br><label for="logo_image_create" class="form-label">Logotipas</label>
+                            <input name="logo" class="form-control" type="file" id="logo_image_create">
+                            @error('logo')
+                            <small>{{$message}}</small><br>
+                            @enderror
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Uždaryti</button>
@@ -96,6 +105,8 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>Logo</th>
+                    <th>Nuotrauka</th>
                     <th>Pavadinimas</th>
                     <th>Aprašas</th>
                     <th>Adresas</th>
@@ -108,6 +119,8 @@
             <tbody>
                 @foreach ($kebab_list as $shop)
                 <tr>
+                    <td><img src="{{ asset('images/diners/logos/' . $shop->logo) }}" alt="" width="50" height="50"></td>
+                    <td><img src="{{ asset('images/diners/photos/' . $shop->image) }}" alt="" width="50" height="50"></td>
                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $shop->name }}</strong></td>
                     <td>{{ $shop->description }}</td>
                     <td>{{ $shop->address }}</td>
@@ -160,7 +173,7 @@
                 </button>
             </div>
 
-            <form id='editInformation' action="" method="POST">
+            <form id='editInformation' action="" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -211,8 +224,17 @@
                     <small>{{$message}}</small><br>
                     @enderror
 
-                    <label for="image">Image:</label>
-                    <input type="text" name="image" value="{{ old('image') }}"><br>
+                    <br><label for="kebab_image_edit" class="form-label">Nuotrauka</label>
+                    <input name="image" class="form-control" type="file" id="kebab_image_edit">
+                    @error('image')
+                    <small>{{$message}}</small><br>
+                    @enderror
+
+                    <br><label for="logo_image_edit" class="form-label">Logotipas</label>
+                    <input name="logo" class="form-control" type="file" id="logo_image_edit">
+                    @error('logo')
+                    <small>{{$message}}</small><br>
+                    @enderror
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Uždaryti</button>
@@ -263,8 +285,8 @@
 @if (old('_method'))
 <script>
     window.onload = () => {
-        const myModal = new bootstrap.Modal('#editModal'); 
-        document.getElementById("editInformation").setAttribute('action', '{{old("id")}}');   
+        const myModal = new bootstrap.Modal('#editModal');
+        document.getElementById("editInformation").setAttribute('action', '{{old("id")}}');
         myModal.show();
     }
 </script>

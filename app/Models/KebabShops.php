@@ -23,7 +23,7 @@ class KebabShops extends Model
         'open_time',
         'close_time',
         'image',
-
+        'logo',
     ];
 
 
@@ -42,10 +42,8 @@ class KebabShops extends Model
         return $this->hasMany(KebabProduct::class);
     }
 
-    public function reviews(): HasManyThrough
+    public function reviews(): HasMany
     {
         return $this->hasMany(Reviews::class);
     }
-
-    
 }

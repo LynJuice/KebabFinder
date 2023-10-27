@@ -64,6 +64,24 @@ class KebabShopsController extends Controller
         $kebab_shop_info['user_id'] = Auth::user()->id;
         $new_kebab_shop = KebabShops::create($kebab_shop_info);
 
+        try {
+            $name = $new_kebab_shop->id . '-' . time() . '-' . $request->image->getClientOriginalName();
+            $request->image->storeAs('diners/photos', $name, 'public');
+            $new_kebab_shop->image = $name;
+            $new_kebab_shop->save();
+        } catch (\Throwable $th) {
+            $new_kebab_shop->image = null;
+        }
+
+        try {
+            $name = $new_kebab_shop->id . '-' . time() . '-' . $request->logo->getClientOriginalName();
+            $request->logo->storeAs('diners/logos', $name, 'public');
+            $new_kebab_shop->logo = $name;
+            $new_kebab_shop->save();
+        } catch (\Throwable $th) {
+            $new_kebab_shop->logo = null;
+        }
+
         return redirect()->route('shops.index')->with('success', $new_kebab_shop->name . ' sėkmingai sukurtas');
     }
 
@@ -101,7 +119,22 @@ class KebabShopsController extends Controller
         $shop->phone = $kebab_shop_info['phone'];
         $shop->open_time = $kebab_shop_info['open_time'];
         $shop->close_time = $kebab_shop_info['close_time'];
-        $shop->image = $kebab_shop_info['image'];
+
+        try {
+            $name = $shop->id . '-' . time() . '-' . $request->image->getClientOriginalName();
+            $request->image->storeAs('diners/photos', $name, 'public');
+            $shop->image = $name;
+        } catch (\Throwable $th) {
+            $shop->image = null;
+        }
+
+        try {
+            $name = $shop->id . '-' . time() . '-' . $request->logo->getClientOriginalName();
+            $request->logo->storeAs('diners/logos', $name, 'public');
+            $shop->logo = $name;
+        } catch (\Throwable $th) {
+            $shop->logo = null;
+        }
 
         $shop->save();
 
