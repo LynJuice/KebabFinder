@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateProductRequest extends FormRequest
 {
@@ -23,9 +25,9 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'description' => 'string|max:255',
             'price' => 'required|numeric|min:0',
-            'description' => 'required|string|max:255',
-            'image' => 'required|string|max:255',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 }

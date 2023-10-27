@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->decimal('price');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->boolean('in_stock')->default(true);
         });
     }

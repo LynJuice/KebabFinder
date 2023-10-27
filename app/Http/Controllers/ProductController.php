@@ -43,7 +43,19 @@ class ProductController extends Controller
     {
         $product_info = $request->validated();
         $product_info['user_id'] = Auth::user()->id;
+        $product_info['images'] = "";
         $product = Product::create($product_info);
+
+        try {
+            $name = $product->id . '-' . time() . '-' . $request->image->getClientOriginalName();
+            $request->image->storeAs('products', $name, 'public');
+            $product->image = $name;
+            $product->save();
+        } catch (\Throwable $th) {
+            $product->image = null;
+        }
+
+
 
         return redirect()->route('products.index')->with('success', 'Produktas pridėtas sėkmingai.');
     }
@@ -61,7 +73,6 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        
     }
 
     /**
@@ -77,9 +88,19 @@ class ProductController extends Controller
         $product->name = $product_info['name'];
         $product->price = $product_info['price'];
         $product->description = $product_info['description'];
-        $product->image = $product_info['image'];
-     
-        $product->update($product_info);
+        // $product->image = $product_info['image'];
+        if ($request->image) {
+            try {
+                $name = $product->id . '-' . time() . '-' . $request->image->getClientOriginalName();
+                $request->image->storeAs('products', $name, 'public');
+                $product->image = $name;
+            } catch (\Throwable $th) {
+                $product->image = null;
+            }
+        }
+
+        $product->save();
+
 
         return redirect()->route('products.index')->with('success', $product_info['name'] . ' atnaujintas sėkmingai.');
     }

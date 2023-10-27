@@ -29,7 +29,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="{{route('products.store')}}" method="post">
+                        <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data" >
                             @csrf
                             <div class="modal-body">
 
@@ -51,8 +51,8 @@
                                 <small>{{$message}}</small><br>
                                 @enderror
 
-                                <br><label for="image">Nuotrauka</label>
-                                <input type="text" name="image" class="form-control" placeholder="Nuotrauka" value="{{ old('image') }}">
+                                <br><label for="createImage" class="form-label">Nuotrauka</label>
+                                <input name="image" class="form-control" type="file" id="createImage">
                                 @error('image')
                                 <small>{{$message}}</small><br>
                                 @enderror
@@ -70,7 +70,6 @@
                 </div>
             </div>
 
-
             <!-- Edit -->
             <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -81,7 +80,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form id='editInformation' action="" method="post">
+                        <form id='editInformation' action="" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -107,8 +106,8 @@
                                 <small>{{$message}}</small><br>
                                 @enderror
 
-                                <br><label for="image">Nuotrauka</label>
-                                <input type="text" name="image" class="form-control" placeholder="Nuotrauka" value="{{ old('image') }}">
+                                <br><label for="editImage" class="form-label">Nuotrauka</label>
+                                <input name="image" class="form-control" type="file" id="editImage">
                                 @error('image')
                                 <small>{{$message}}</small><br>
                                 @enderror
@@ -150,6 +149,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Nuotrauka</th>
                         <th>Pavadinimas</th>
                         <th>Atsiliepimai</th>
                         <th>Kebabinės</th>
@@ -158,6 +158,7 @@
                 <tbody class="table-border-bottom-0">
                     @foreach ($products as $product)
                     <tr>
+                        <td><img src="{{ asset('images/products/' . $product->image) }}" alt="" width="50" height="50" class="rounded-circle"></td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $product->name }}</strong></td>
                         <td>
                             @if($product->reviews->count('ratings') == 0)
