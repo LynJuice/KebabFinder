@@ -44,8 +44,8 @@
                             </td>
                             <td>
 
-                                @foreach ($product->kebabShops as $kebabShop)
-                                <div class="text-center"> {{ $kebabShop->id }} - {{$kebabShop->name}} </div>
+                                @foreach ($product->diners as $diner)
+                                <div class="text-center"> {{ $diner->id }} - {{$diner->name}} </div>
                                 @endforeach
 
                             </td>

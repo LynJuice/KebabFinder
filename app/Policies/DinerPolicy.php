@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\Response;
-use App\Models\KebabShops;
+use App\Models\Diner;
 use App\Models\User;
 
-class KebabShopsPolicy
+class DinerPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class KebabShopsPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, KebabShops $kebabShops): bool
+    public function view(User $user, Diner $kebabShops): bool
     {
         return $user->can('manage kebab') && ($user->hasRole('svetaines administratorius') || $user->id == $kebabShops->user_id);
     }
@@ -37,33 +37,32 @@ class KebabShopsPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, KebabShops $kebabShops): bool
+    public function update(User $user, Diner $diner): bool
     {
-        return $user->can('manage kebab') && ($user->hasRole('svetaines administratorius') || $user->id == $kebabShops->user_id);
+        return $user->can('manage kebab') && ($user->hasRole('svetaines administratorius') || $user->id == $diner->user_id);
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, KebabShops $kebabShops): bool
+    public function delete(User $user, Diner $diner): bool
     {
-        // dd($user->can('delete kebab') && ($user->hasRole('svetaines administratorius') || $user->id == $kebabShops->user_id));
-        return $user->can('delete kebab') && ($user->hasRole('svetaines administratorius') || $user->id == $kebabShops->user_id);
+        return $user->can('delete kebab') && ($user->hasRole('svetaines administratorius') || $user->id == $diner->user_id);
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, KebabShops $kebabShops): bool
+    public function restore(User $user, Diner $diner): bool
     {
-        return $this->delete($user, $kebabShops);
+        return $this->delete($user, $diner);
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, KebabShops $kebabShops): bool
+    public function forceDelete(User $user, Diner $diner): bool
     {
-        return $this->delete($user, $kebabShops);
+        return $this->delete($user, $diner);
     }
 }

@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\URL;
-use App\Http\Requests\UpdateKebabShopsRequest;
-use App\Http\Requests\StoreKebabShopsRequest;
-use App\Models\KebabShops;
+use App\Http\Requests\UpdateDinerRequest;
+use App\Http\Requests\StoreDinerRequest;
+use App\Models\Diner;
 use App\Models\User;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class KebabShopsController extends Controller
+class DinerController extends Controller
 {
     // public function __construct()
     // {
@@ -25,7 +25,7 @@ class KebabShopsController extends Controller
     {
         $user = User::with("roles")->find(Auth::user()->id);
         if ($user->hasRole('svetaines administratorius')) {
-            $kebab_list = KebabShops::all();
+            $kebab_list = Diner::all();
         } else if ($user->hasRole('kebabines administratorius')) {
             $kebab_list = $user->kebabShops;
         } else {
@@ -42,7 +42,7 @@ class KebabShopsController extends Controller
 
     public function table()
     {
-        $kebab_list = KebabShops::all();
+        $kebab_list = Diner::all();
         return view('table', compact("kebab_list"));
     }
 
@@ -57,12 +57,12 @@ class KebabShopsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreKebabShopsRequest $request)
+    public function store(StoreDinerRequest $request)
     {
         $kebab_shop_info = $request->validated();
         $kebab_shop_info['is_open'] = isset($_POST['is_open']);
         $kebab_shop_info['user_id'] = Auth::user()->id;
-        $new_kebab_shop = KebabShops::create($kebab_shop_info);
+        $new_kebab_shop = Diner::create($kebab_shop_info);
 
         try {
             $name = $new_kebab_shop->id . '-' . time() . '-' . $request->image->getClientOriginalName();
@@ -88,7 +88,7 @@ class KebabShopsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(KebabShops $shop)
+    public function show(Diner $shop)
     {
         // 
     }
@@ -96,7 +96,7 @@ class KebabShopsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(KebabShops $shop)
+    public function edit(Diner $shop)
     {
         // 
     }
@@ -104,7 +104,7 @@ class KebabShopsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateKebabShopsRequest $request, KebabShops $shop)
+    public function update(UpdateDinerRequest $request, Diner $shop)
     {
         if (User::find(Auth::user()->id)->cannot('update', $shop)) {
             abort(403);
@@ -144,7 +144,7 @@ class KebabShopsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KebabShops $shop)
+    public function destroy(Diner $shop)
     {
         if (User::find(Auth::user()->id)->cannot('delete', $shop)) {
             abort(403);
@@ -154,7 +154,7 @@ class KebabShopsController extends Controller
         // dd($shop->shopProducts()->get());
 
         // delete reviews
-        $shop->shopReviews()->delete();
+        $shop->reviews()->delete();
         $shop->shopProducts()->delete();
         $shop->delete();
 

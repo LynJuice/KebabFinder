@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\KebabShops;
+use App\Models\Diner;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,12 +13,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kebab_products', function (Blueprint $table) {
-            $table->foreignId('kebab_shops_id')->constrained('kebab_shops');
+            $table->foreignId('diner_id')->constrained('diners');
             // $table->foreignId('product_id')->on('products')->refrences('id');
             $table->foreignId('product_id')->constrained('products');
             $table->float('price', 8, 2)->nullable();
             $table->timestamps();
-            $table->primary(['kebab_shops_id', 'product_id']);
+            $table->primary(['diner_id', 'product_id']);
         });
     }
 

@@ -4,15 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\KebabShops;
+use App\Models\Diner;
 
-class KebabShopsSeeder extends Seeder
+class DinerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        KebabShops::factory()->count(10)->create();
+        Diner::factory()->count(10)->create();
     }
 }

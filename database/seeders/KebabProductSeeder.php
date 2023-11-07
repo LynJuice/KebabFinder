@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Diner;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\KebabProduct;
-use App\Models\KebabShops;
 use App\Models\Product;
 
 class KebabProductSeeder extends Seeder
@@ -15,13 +15,12 @@ class KebabProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $kebabShops = KebabShops::all();
-        foreach ($kebabShops as $kebabShop) {
-            $products = $kebabShop->user->products;
+        $diners = Diner::all();
+        foreach ($diners as $diner) {
+            $products = $diner->user->products;
             foreach ($products as $product) {
                 if (rand(0, 10) < 3) {
-                    
-                    $kebabShop->products()->attach($product->id, ['price' => rand(1, 10)]);
+                    $diner->products()->attach($product->id, ['price' => rand(1, 10)]);
                 }
             }
         }

@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         // add permissions
         $this->call(PermissionSeeder::class);
-        $this->call(KebabShopsSeeder::class);
+        $this->call(DinerSeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(KebabProductSeeder::class);
         $this->call(ReviewSeeder::class);

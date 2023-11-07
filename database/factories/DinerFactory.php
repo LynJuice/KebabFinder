@@ -4,12 +4,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\KebabShops;
+use App\Models\Diner;
 use App\Models\User;
 
-class KebabShopsFactory extends Factory
+class DinerFactory extends Factory
 {
-    protected $model = KebabShops::class;
+    protected $model = Diner::class;
     /**
      * Define the model's default state.
      *
