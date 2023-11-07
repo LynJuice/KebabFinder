@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('kebab_shop_id')->references('id')->on('kebab_shops');
+            $table->foreignId('diner_id')->references('id')->on('diners');
             $table->foreignId('product_id')->references('id')->on('products');
             $table->string('comment');
             $table->integer('rating');

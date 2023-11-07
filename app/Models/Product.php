@@ -24,9 +24,9 @@ class Product extends Model
         'is_available',
     ];
 
-    public function kebabShops(): BelongsToMany
+    public function diners(): BelongsToMany
     {
-        return $this->belongsToMany(KebabShops::class, "kebab_products");
+        return $this->belongsToMany(Diner::class, "kebab_products");
     }
 
     public function user(): BelongsTo

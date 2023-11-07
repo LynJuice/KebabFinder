@@ -176,9 +176,8 @@
                             @endif
                         </td>
                         <td>
-
-                            @foreach ($product->kebabShops as $kebabShop)
-                            <div> {{ $kebabShop->id }} - {{$kebabShop->name}} </div>
+                            @foreach ($product->diners as $diner)
+                            <div> {{ $diner->id }} - {{$diner->name}} </div>
                             @endforeach
                         </td>
                         <td>

@@ -21,9 +21,9 @@ class KebabProduct extends Model
 
     ];
 
-    public function kebabShops(): BelongsTo
+    public function diners(): BelongsTo
     {
-        return $this->belongsTo(KebabShops::class);
+        return $this->belongsTo(Diner::class);
     }
 
     public function product(): BelongsTo

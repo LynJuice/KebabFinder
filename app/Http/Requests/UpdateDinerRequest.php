@@ -6,15 +6,14 @@ use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class StoreKebabShopsRequest extends FormRequest
+class UpdateDinerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return User::find(Auth::user()->id)->can('add kebab');
-        // can('add kebab');
+        return true;
     }
 
     /**
@@ -33,8 +32,8 @@ class StoreKebabShopsRequest extends FormRequest
             'phone' => 'required',
             'open_time' => 'required',
             'close_time' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'logo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'logo' => 'image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 }

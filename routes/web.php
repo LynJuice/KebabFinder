@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\KebabShopsController;
+use App\Http\Controllers\DinerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KebabProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Models\KebabShops;
+use App\Models\Diner;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 
@@ -42,14 +42,14 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class);
-    Route::resource('shops', KebabShopsController::class);
+    Route::resource('shops', DinerController::class);
     Route::get('/users', [ProfileController::class, "index"])->name('users');
     Route::get('/shops/{kebabShop}/products', [KebabProductController::class, "index"])->name('shops.products.index');
     Route::post('/shops/{kebabShop}/products', [KebabProductController::class, "store"])->name('shops.products.store');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/table', [KebabShopsController::class, "table"])->name('table');
+    Route::get('/table', [DinerController::class, "table"])->name('table');
     Route::get('/admin', function () {return view('admin');})->name('admin');
 });
 

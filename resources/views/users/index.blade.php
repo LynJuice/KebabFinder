@@ -36,8 +36,8 @@
                             {{$user->email}}
                         </td>
                         <td>
-                            @foreach ($user->kebabShops as $kebabShop)
-                            <a href="{{route('shops.show', $kebabShop->id)}}">{{$kebabShop->name}}</a> <br>
+                            @foreach ($user->diners as $diner)
+                            <a href="{{route('shops.show', $diner->id)}}">{{$diner->name}}</a> <br>
                             @endforeach
                         </td>
                         <td>

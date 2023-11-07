@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KebabProduct;
+use App\Models\Diner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKebab_ProductRequest;
 use App\Http\Requests\UpdateKebab_ProductRequest;
-use App\Models\KebabShops;
 
 class KebabProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(KebabShops $kebabShop)
+    public function index(diner $kebabShop)
     {
         $user_products = $kebabShop->user->products;
         $kebab_products = $kebabShop->products;
@@ -36,7 +35,7 @@ class KebabProductController extends Controller
     public function store(StoreKebab_ProductRequest $request)
     {
         // save all the new kebab products to the kebab shop
-        $kebabShop = KebabShops::find($request->kebabShop);
+        $kebabShop = diner::find($request->kebabShop);
         $kebabShop->products()->sync($request->products);
 
         return redirect()->route('shops.index', $kebabShop)->with('success', 'Produktu sėkmingai atnaujintas kebabinėje: ' . $kebabShop->name);

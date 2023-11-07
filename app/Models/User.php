@@ -61,9 +61,9 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function kebabShops()
+    public function Diners()
     {
-        return $this->hasMany(KebabShops::class);
+        return $this->hasMany(Diner::class);
     }
 
     public function reviews()

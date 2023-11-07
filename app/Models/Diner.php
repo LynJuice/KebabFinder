@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
-class KebabShops extends Model
+class Diner extends Model
 {
     use HasFactory;
     public $timestamps = false;
@@ -29,7 +29,7 @@ class KebabShops extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'kebab_products', 'kebab_shops_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'kebab_products', 'diner_id', 'product_id');
     }
 
     public function user()
@@ -44,6 +44,6 @@ class KebabShops extends Model
 
     public function reviews(): HasMany
     {
-        return $this->hasMany(Reviews::class);
+        return $this->hasMany(Review::class);
     }
 }

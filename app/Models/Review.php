@@ -13,7 +13,7 @@ class Review extends Model
         'user_id',
         'rating',
         'comment',
-        'kebab_product_id',
+        'diner_id',
     ];
 
     public function user():BelongsTo
@@ -28,7 +28,7 @@ class Review extends Model
 
     public function shop():BelongsTo
     {
-        return $this->belongsTo(KebabShops::class, 'kebab_shop_id');
+        return $this->belongsTo(Diner::class, 'diner_id');
     }
 
 }
