@@ -66,6 +66,7 @@ class DinerController extends Controller
 
         try {
             $name = $new_kebab_shop->id . '-' . time() . '-' . $request->image->getClientOriginalName();
+            $name = str_replace(' ', '', $name);
             $request->image->storeAs('diners/photos', $name, 'public');
             $new_kebab_shop->image = $name;
             $new_kebab_shop->save();
@@ -75,8 +76,9 @@ class DinerController extends Controller
 
         try {
             $name = $new_kebab_shop->id . '-' . time() . '-' . $request->logo->getClientOriginalName();
-            $request->logo->storeAs('diners/logos', $name, 'public');
+            $name = str_replace(' ', '', $name);
             $new_kebab_shop->logo = $name;
+            $request->logo->storeAs('diners/logos', $name, 'public');
             $new_kebab_shop->save();
         } catch (\Throwable $th) {
             $new_kebab_shop->logo = null;
@@ -90,7 +92,7 @@ class DinerController extends Controller
      */
     public function show(Diner $shop)
     {
-        // 
+        return view('kebabShops.show', compact('shop'));
     }
 
     /**
@@ -122,6 +124,7 @@ class DinerController extends Controller
 
         try {
             $name = $shop->id . '-' . time() . '-' . $request->image->getClientOriginalName();
+            $name = str_replace(' ', '', $name);
             $request->image->storeAs('diners/photos', $name, 'public');
             $shop->image = $name;
         } catch (\Throwable $th) {
@@ -130,6 +133,7 @@ class DinerController extends Controller
 
         try {
             $name = $shop->id . '-' . time() . '-' . $request->logo->getClientOriginalName();
+            $name = str_replace(' ', '', $name);
             $request->logo->storeAs('diners/logos', $name, 'public');
             $shop->logo = $name;
         } catch (\Throwable $th) {
