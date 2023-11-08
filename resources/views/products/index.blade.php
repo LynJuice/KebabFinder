@@ -193,6 +193,8 @@
                     @endforeach
                 </tbody>
             </table>
+            <br>
+            {{ $products->links() }}
         </div>
     </h5>
 </div>
