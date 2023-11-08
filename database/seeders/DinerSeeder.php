@@ -13,6 +13,6 @@ class DinerSeeder extends Seeder
      */
     public function run(): void
     {
-        Diner::factory()->count(10)->create();
+        Diner::factory()->count(100)->create();
     }
 }

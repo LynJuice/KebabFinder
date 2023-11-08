@@ -25,9 +25,9 @@ class DinerController extends Controller
     {
         $user = User::with("roles")->find(Auth::user()->id);
         if ($user->hasRole('svetaines administratorius')) {
-            $kebab_list = Diner::all();
+            $kebab_list = Diner::paginate(10);
         } else if ($user->hasRole('kebabines administratorius')) {
-            $kebab_list = $user->kebabShops;
+            $kebab_list = $user->kebabShops->paginate(10);
         } else {
             abort(403);
         }
@@ -84,7 +84,7 @@ class DinerController extends Controller
             $new_kebab_shop->logo = null;
         }
 
-        return redirect()->route('shops.index')->with('success', $new_kebab_shop->name . ' sėkmingai sukurtas');
+        return back()->with('success', $new_kebab_shop->name . ' sėkmingai sukurtas');
     }
 
     /**
@@ -142,7 +142,7 @@ class DinerController extends Controller
 
         $shop->save();
 
-        return redirect()->route('shops.index')->with('success', $shop->name . ' sėkmingai atnaujintas');
+        return back()->with('success', $shop->name . ' sėkmingai atnaujintas');
     }
 
     /**
@@ -162,7 +162,7 @@ class DinerController extends Controller
         $shop->shopProducts()->delete();
         $shop->delete();
 
-        return redirect()->route('shops.index')->with('success', $shop->name . ' sėkmingai ištrintas');
+        return back()->with('success', $shop->name . ' sėkmingai ištrintas');
     }
 
 }

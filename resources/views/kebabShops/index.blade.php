@@ -141,6 +141,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $kebab_list->links() }}
     </div>
 </div>
 
