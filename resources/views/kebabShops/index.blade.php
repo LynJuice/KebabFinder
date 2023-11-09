@@ -121,7 +121,7 @@
                 <tr>
                     <td><img src="{{ asset('images/diners/logos/' . $shop->logo) }}" alt="" width="50" height="50"></td>
                     <td><img src="{{ asset('images/diners/photos/' . $shop->image) }}" alt="" width="50" height="50"></td>
-                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $shop->name }}</strong></td>
+                    <td><a href="{{ route('shops.show', $shop) }}"><strong>{{ $shop->name }}</strong></a></td>
                     <td>{{ $shop->description }}</td>
                     <td>{{ $shop->address }}</td>
                     <td><span class="badge bg-label-primary me-1">{{ $shop->phone }}</span></td>

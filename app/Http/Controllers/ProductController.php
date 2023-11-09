@@ -65,7 +65,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $reviews = $product->reviews()->paginate(3);
+        // dd($reviews);
+        return view('products.show', compact('product', 'reviews'));
     }
 
     /**
@@ -119,7 +121,7 @@ class ProductController extends Controller
         $productName = $product->name;
         $product->delete();
 
-        // return redirect()->route('products.index')->with('success', $productName . ' ištrintas sėkmingai.');
+        // // return redirect()->route('products.index')->with('success', $productName . ' ištrintas sėkmingai.');
         return back()->with('success', $productName . ' ištrintas sėkmingai.');
     }
 }
