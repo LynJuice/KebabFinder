@@ -37,7 +37,7 @@
                         </td>
                         <td>
                             @foreach ($user->diners as $diner)
-                            <a href="{{route('shops.show', $diner->id)}}">{{$diner->name}}</a> <br>
+                            <a href="{{route('shops.show', $diner->id)}}">{{$diner->id}} - {{$diner->name}}</a> <br> 
                             @endforeach
                         </td>
                         <td>
