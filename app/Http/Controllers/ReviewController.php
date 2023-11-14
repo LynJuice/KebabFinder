@@ -31,17 +31,17 @@ class ReviewController extends Controller
      */
     public function store(StoreReviewRequest $request)
     {
-
-        // check if user is logged in and is not the kebab shop owner and hasn't posted a comment yet
-        if (auth()->check() && auth()->user()->id != $request->kebab_shop_id && !Review::where('user_id', auth()->user()->id)->where('kebab_shop_id', $request->kebab_shop_id)->exists()) {
-            $review = Review::create([
+        $review_info = $request->validated();
+        // if review hasnt been posted on this product by this user and the user does not own the diner then create a review
+        if (!Review::where('user_id', auth()->user()->id)->where('product_id', $review_info->product_id)->exists()) {
+        $review = Review::create([
                 'user_id' => auth()->user()->id,
-                'kebab_shop_id' => $request->kebab_shop_id,
-                'rating' => $request->rating,
-                'comment' => $request->comment
+                'diner_id' => $review_info->kebab_shop_id,
+                'rating' => $review_info->rating,
+                'comment' => $review_info->comment,
+                'product_id' => $review_info->product_id,
             ]);
             
-            dd($review);
             return redirect()->back()->with('success', 'Atsiliepimas pridėtas sėkmingai.');
         } else {
             return redirect()->back()->with('error', 'Jūs jau palikote atsiliepimą šiai kebabinėi.');
@@ -77,6 +77,7 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+        $review->delete();
+        return redirect()->back()->with('success', 'Atsiliepimas ištrintas sėkmingai.');
     }
 }
