@@ -24,6 +24,8 @@ class StoreReviewRequest extends FormRequest
         return [
             'rating' => 'required',
             'comment' => 'required',
+            'kebab_shop_id' => 'required',
+            'product_id' => 'required',
         ];
     }
 

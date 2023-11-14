@@ -11,7 +11,7 @@ class StoreDinerReviewRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class StoreDinerReviewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'rating' => 'required',
+            'comment' => 'required',
+            'diner_id' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'rating.required' => 'Įvertinimas yra privalomas.',
+            'comment.required' => 'Komentaras yra privalomas.',
         ];
     }
 }

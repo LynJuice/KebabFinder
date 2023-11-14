@@ -92,7 +92,8 @@ class DinerController extends Controller
      */
     public function show(Diner $shop)
     {
-        return view('kebabShops.show', compact('shop'));
+        $reviews = $shop->reviews()->paginate(3);
+        return view('kebabShops.show', compact('shop', 'reviews'));
     }
 
     /**

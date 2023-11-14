@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KebabProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Diner;
+use App\Http\Controllers\DinerReviewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 
@@ -31,6 +31,7 @@ Route::get('/', [HomeController::class, "index"])->name('index');
 // Route::resource('kebabShop', 'App\Http\Controllers\KebabShop');
 
 Route::resource('reviews', ReviewController::class);
+Route::resource('dinerReviews', DinerReviewController::class);
 
 // Route::get('/table', function () {
 //     return view('table');
