@@ -36,8 +36,21 @@
             {{$review->comment}}
             <br>
             <hr>
-            @endforeach        
+            @endforeach
             {{ $reviews->links() }}
+
+
+            <form method="POST" action="{{ route('reviews.store') }}" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="kebab_shop_id" value="{{ $product->id }}">
+                <div class="mb-3">
+                <label for="customRange2" class="form-label">Ivertinimas Balais</label>
+                <input name="rating" type="range" class="form-range" min="0" max="4" id="customRange2">
+
+                <textarea class="form-control" name="comment" placeholder="Komentaras" rows="3"></textarea>
+
+                <button type="submit">Prideti atsilepima</button>
+            </form>
         </div>
     </div>
 </div>
