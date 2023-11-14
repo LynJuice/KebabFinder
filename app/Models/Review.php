@@ -14,6 +14,7 @@ class Review extends Model
         'rating',
         'comment',
         'diner_id',
+        'product_id',
     ];
 
     public function user():BelongsTo

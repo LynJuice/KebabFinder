@@ -22,7 +22,16 @@ class StoreReviewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'rating' => 'required',
+            'comment' => 'required',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'rating.required' => 'Įvertinimas yra privalomas.',
+            'comment.required' => 'Komentaras yra privalomas.',
         ];
     }
 }
