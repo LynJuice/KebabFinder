@@ -21,7 +21,7 @@ class ProductController extends Controller
         if ($user->hasRole('svetaines administratorius')) {
             $products = Product::paginate(10);
         } else if ($user->hasRole('kebabines administratorius')) {
-            $products = $user->products->paginate(10);
+            $products = $user->products()->paginate(10);
         } else {
             abort(403);
         }
