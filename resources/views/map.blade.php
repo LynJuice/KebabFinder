@@ -8,6 +8,8 @@
     {{-- MAP --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Document</title>
 </head>
 
@@ -15,6 +17,16 @@
     <div class="mb-3">
         <div id="map"></div>
     </div><!-- End Google Maps -->
+
+    <div class="row g-3">
+        <div class="col">
+            <input id="latitudeInput" type="text" class="form-control" placeholder="latitude" aria-label="Flatitude">
+        </div>
+        <div class="col">
+            <input id="longitudeInput" type="text" class="form-control" placeholder="longitude"
+                aria-label="longitude">
+        </div>
+    </div>
 
     <style>
         #map {
@@ -46,6 +58,9 @@
 
         navigator.geolocation.watchPosition(success, error);
 
+        let latitudeInput = document.getElementById('latitudeInput');
+        let longitudeInput = document.getElementById('longitudeInput');
+
         function success(pos) {
             const lat = pos.coords.latitude;
             const lng = pos.coords.longitude;
@@ -58,6 +73,9 @@
 
             // Set marker position
             mrk.setLatLng([lat, lng]);
+
+            latitudeInput.value = lat;
+            longitudeInput.value = lng;
 
             map.setView([lat, lng]);
         }
@@ -74,12 +92,43 @@
 
         mrk.on('dragend', function(e) {
             var latlng = e.target.getLatLng();
+            latitudeInput.value = latlng.lat;
+            longitudeInput.value = latlng.lng;
             console.log(e);
             console.log(latlng);
             //   setTimeout(function() {
             //     map.on('click', mapClickListen);
             //   }, 10);
         });
+
+        latitudeInput.addEventListener('input', function() {
+            updateMarkerPosition();
+        });
+
+        longitudeInput.addEventListener('input', function() {
+            updateMarkerPosition();
+        });
+
+        function updateMarkerPosition() {
+            const lat = parseFloat(latitudeInput.value);
+            const lng = parseFloat(longitudeInput.value);
+
+            if (!isNaN(lat) && !isNaN(lng)) {
+                // Update marker position
+                mrk.setLatLng([lat, lng]);
+
+                // Update map view
+                map.setView([lat, lng]);
+
+                // Remove the existing marker if it exists
+                if (marker) {
+                    map.removeLayer(marker);
+                }
+
+                // Add marker to the map
+                mrk.addTo(map);
+            }
+        }
 
         mrk.addTo(map);
     </script>
