@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('diner_id')->references('id')->on('diners');
             $table->foreignId('product_id')->references('id')->on('products');
             $table->string('comment');
+            $table->string('image')->nullable();
             $table->integer('rating');
             $table->timestamps(); 
         

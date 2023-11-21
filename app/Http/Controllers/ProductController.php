@@ -119,6 +119,8 @@ class ProductController extends Controller
         }
 
         $productName = $product->name;
+        $product->reviews()->delete();
+        $product->kebabProducts()->delete();
         $product->delete();
 
         // // return redirect()->route('products.index')->with('success', $productName . ' ištrintas sėkmingai.');
