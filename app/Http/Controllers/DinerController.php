@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\URL;
 use App\Http\Requests\UpdateDinerRequest;
 use App\Http\Requests\StoreDinerRequest;
 use App\Models\Diner;
+use App\Http\Requests\UpdateDinerRequest;
+use App\Http\Requests\StoreDinerRequest;
+use App\Models\Diner;
 use App\Models\User;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
@@ -62,7 +65,7 @@ class DinerController extends Controller
         $kebab_shop_info = $request->validated();
         $kebab_shop_info['is_open'] = isset($_POST['is_open']);
         $kebab_shop_info['user_id'] = Auth::user()->id;
-        $new_kebab_shop = Diner::create($kebab_shop_info);
+        $new_kebab_shop = KebabShops::create($kebab_shop_info);
 
         try {
             $name = $new_kebab_shop->id . '-' . time() . '-' . $request->image->getClientOriginalName();
@@ -90,6 +93,7 @@ class DinerController extends Controller
     /**
      * Display the specified resource.
      */
+    public function show(Diner $shop)
     public function show(Diner $shop)
     {
         $reviews = $shop->reviews()->paginate(3);
