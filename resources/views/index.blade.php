@@ -617,6 +617,7 @@
 @endsection
 
 @section("scripts")
+@include('layouts.map')
 @endsection
 
 @section("styles")
