@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\URL;
 use App\Http\Requests\UpdateDinerRequest;
 use App\Http\Requests\StoreDinerRequest;
 use App\Models\Diner;
-use App\Http\Requests\UpdateDinerRequest;
-use App\Http\Requests\StoreDinerRequest;
-use App\Models\Diner;
 use App\Models\User;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
@@ -105,7 +102,6 @@ class DinerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Diner $shop)
     public function show(Diner $shop)
     {
         $reviews = $shop->reviews()->paginate(3);
