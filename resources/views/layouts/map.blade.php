@@ -40,7 +40,9 @@ function success(pos) {
  // Set map focus to current user position
 
 @foreach ($kebab_map as $kebab)
-    L.marker([{{ $kebab->latitude }}, {{ $kebab->longitude }}]).addTo(map);
+    L.marker([{{ $kebab->latitude }}, {{ $kebab->longitude }}])
+    .addTo(map)
+    .bindPopup("<b>{{ $kebab->name }}</b><br><button onclick=\"window.location.href='{{ route('shops.show', $kebab->id) }}'\">View</button>");
 @endforeach
 }
 
