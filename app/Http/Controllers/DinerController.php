@@ -50,6 +50,18 @@ class DinerController extends Controller
     }
 
     /**
+     * Display a listing of the resource. kebabshops admin page
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+     public function map()
+     {
+         $kebab_list = Diner::all();
+         return view('map', compact("kebab_list"));
+     }
+     
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

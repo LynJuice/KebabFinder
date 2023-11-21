@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/table', [DinerController::class, "table"])->name('table');
     Route::get('/admin', function () {return view('admin');})->name('admin');
+    Route::get('/map', [DinerController::class, "map"])->name('map');
 });
 
 Route::get('/logout', function () {

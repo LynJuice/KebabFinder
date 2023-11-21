@@ -12,7 +12,8 @@ class HomeController extends Controller
     public function index()
     {
         $kebab_list = Diner::all()->random(3);
+        $kebab_map = Diner::all();
         $product_list = Product::all()->random(12);
-        return view('index', compact("kebab_list", "product_list"));
+        return view('index', compact("kebab_list", "product_list", "kebab_map"));
     }
 }

@@ -26,6 +26,9 @@
     <link href="{{ asset('aos/aos.css')}}" rel="stylesheet">
     <link href="{{ asset('glightbox/css/glightbox.min.css')}}" rel="stylesheet">
     <link href="{{ asset('swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    {{-- MAP --}}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <!-- Template Main CSS File -->
     <link href="{{ asset('css/main.css')}}" rel="stylesheet">
     @yield('styles')
@@ -42,6 +45,9 @@
 
     <div id="preloader"></div>
 
+    {{-- MAP --}}
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <!-- Vendor JS Files -->
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('aos/aos.js')}}"></script>
