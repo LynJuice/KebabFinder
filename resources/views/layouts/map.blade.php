@@ -1,15 +1,12 @@
 <script>
-    const map = L.map('map'); 
-// Initializes map
+const map = L.map('map'); 
 
-map.setView([51.505, -0.09], 13); 
-// Sets initial coordinates and zoom level
+map.setView([55.229023057406344, 23.88427734375], 6); 
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
- maxZoom: 19,
- attribution: '© OpenStreetMap'
+ maxZoom: 15,
+ attribution: 'Good Vibes Kebab'
 }).addTo(map); 
-// Sets map data source and associates with map
 
 let marker, circle, zoomed;
 
@@ -25,60 +22,68 @@ var yellowIcon = new L.Icon({
 navigator.geolocation.watchPosition(success, error);
 
 function success(pos) {
-
- const lat = pos.coords.latitude;
- const lng = pos.coords.longitude;
- DisplayMap(lat, lng);
-}
-
-function error(err) {
- if (err.code === 1) {
-     alert("Please allow geolocation access");
- } else {
-     alert("Cannot get current location");
- }
-}
-
-function DisplayMap(lat, lng) {
+    const lat = pos.coords.latitude;
+    const lng = pos.coords.longitude;
     const accuracy = pos.coords.accuracy / 5;
 
-    if (marker) {
+    if (marker || circle) {
         map.removeLayer(marker);
         map.removeLayer(circle);
     }
-// Removes any existing marker and circule (new ones about to be set)
 
-marker = L.marker( new L.LatLng(lat, lng), {icon:yellowIcon}).addTo(map);
-circle = L.circle([lat, lng], { radius: accuracy, color: 'DarkRed', fillColor: 'Red' }).addTo(map);
-// Adds marker to the map and a circle for accuracy
+    const location = new L.LatLng(lat, lng);
+    marker = L.marker( location, {icon:yellowIcon}).addTo(map);
+    circle = L.circle(location, { radius: accuracy, color: 'DarkRed', fillColor: 'Red' }).addTo(map);
 
-if (!zoomed) {
-    zoomed = map.fitBounds(circle.getBounds()); 
+    if (!zoomed) {
+        zoomed = map.fitBounds(circle.getBounds()); 
+    }
+
+    map.setView(location, 13);
+
+    showAllMarkers();
 }
-// Set zoom to boundaries of accuracy circle
 
-map.setView([lat, lng]);
-// Set map focus to current user position
+function error(err) {
+    const lat = 55.229023057406344;
+    const lng = 23.88427734375;
 
+    if(marker)
+    {
+        map.removeLayer(marker);
+    }
 
+    map.setView(new L.LatLng(lat, lng), 6);
 
-@foreach ($kebab_map as $kebab)
+    showAllMarkers();
+}
 
-var LogoIcon = new L.Icon({
- iconUrl: '{{ asset('images/diners/logos/' . $kebab->logo) }}',
- shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
- iconSize: [40, 40],
- iconAnchor: [12, 41],
- popupAnchor: [1, -34],
- shadowSize: [41, 41]
-});
+function showAllMarkers(){
+    @foreach ($kebab_map as $kebab)
+        var LogoIcon = new L.Icon({
+            iconUrl: '{{ asset('images/diners/logos/' . $kebab->logo) }}',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [40, 40],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
 
+        var popupText = `
+        <div class="card-body text-center">
+            <h5 class="card-title"><b>{{ $kebab->name }}</b></h5>
+            <p class="card-text">{{ $kebab->address }}</p>
+            <p class="card-text">{{ $kebab->phone }}</p>
+            <p class="card-text">{{ $kebab->description }}</p>
+            <a href="{{ route('shops.show', $kebab->id) }}" class="btn btn-primary" style="color:white">Žiurėti</a>
+        </div>
+`;
+        showMarker([{{ $kebab->latitude }}, {{ $kebab->longitude }}], LogoIcon, popupText);
+    @endforeach
+}
 
-
-   L.marker(  new L.LatLng({{ $kebab->latitude }}, {{ $kebab->longitude }}), {icon:LogoIcon})
-   .addTo(map)
-   .bindPopup("<b>{{ $kebab->name }}</b><br><button onclick=\"window.location.href='{{ route('shops.show', $kebab->id) }}'\">View</button>");
-   
-@endforeach
+function showMarker(location, icon, popupText) {
+    marker = L.marker(location, {icon: icon}).addTo(map);
+    marker.bindPopup(popupText);
 }
  </script>
