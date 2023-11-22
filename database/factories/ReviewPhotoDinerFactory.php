@@ -2,14 +2,16 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Diner;
+use App\Models\DinerReview;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\ReviewPhotoDiner;
 use App\Models\User;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DinerReview>
  */
-class DinerReviewFactory extends Factory
+class ReviewPhotoDinerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,10 +21,9 @@ class DinerReviewFactory extends Factory
     public function definition(): array
     {
         return [
+            'diner_review_id' => DinerReview::all()->random()->id,
             'user_id' => User::whereHas("roles", function($q){ $q->where("name", "vartotojas"); })->get()->random()->id,
-            'diner_id' => Diner::all()->random()->id,
-            'comment' => $this->faker->text(100),
-            'rating' => $this->faker->numberBetween(1, 5),
+            'image' => $this->faker->imageUrl(640, 480),
         ];
     }
 }

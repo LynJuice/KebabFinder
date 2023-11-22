@@ -49,6 +49,17 @@
 
 
             <hr>
+            <h1 class="text-center">Klientu Nuotraukos</h1>
+            <div class="row">
+                @foreach($shop->reviewPhotos as $reviewPhoto)
+                <div class="col-lg-4">
+                    <img src="{{$reviewPhoto->image}}" alt="{{ $shop->name }}" class="img-fluid">
+                </div>
+                @endforeach
+            </div>
+
+
+            <hr>
             <h1 class="text-center"> Atsilepimai </h1>
             @foreach($reviews as $review)
 

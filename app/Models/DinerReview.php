@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class DinerReview extends Model
 {
@@ -26,5 +27,8 @@ class DinerReview extends Model
         return $this->belongsTo(Diner::class);
     }
 
-
+    public function reviewPhotos():HasMany
+    {
+        return $this->hasMany(ReviewPhotoDiner::class);
+    }
 }

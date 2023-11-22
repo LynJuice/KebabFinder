@@ -46,4 +46,9 @@ class Diner extends Model
     {
         return $this->hasMany(DinerReview::class);
     }
+
+    public function reviewPhotos(): HasManyThrough
+    {
+        return $this->hasManyThrough(ReviewPhotoDiner::class, DinerReview::class);
+    }
 }
