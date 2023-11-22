@@ -21,7 +21,7 @@ class ProductController extends Controller
         if ($user->hasRole('svetaines administratorius')) {
             $products = Product::paginate(10);
         } else if ($user->hasRole('kebabines administratorius')) {
-            $products = $user->products->paginate(10);
+            $products = $user->products()->paginate(10);
         } else {
             abort(403);
         }
@@ -119,6 +119,8 @@ class ProductController extends Controller
         }
 
         $productName = $product->name;
+        $product->reviews()->delete();
+        $product->kebabProducts()->delete();
         $product->delete();
 
         // // return redirect()->route('products.index')->with('success', $productName . ' ištrintas sėkmingai.');

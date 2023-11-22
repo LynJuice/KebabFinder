@@ -27,7 +27,7 @@ class DinerController extends Controller
         if ($user->hasRole('svetaines administratorius')) {
             $kebab_list = Diner::paginate(10);
         } else if ($user->hasRole('kebabines administratorius')) {
-            $kebab_list = $user->kebabShops->paginate(10);
+            $kebab_list = $user->Diners()->paginate(10);
         } else {
             abort(403);
         }
