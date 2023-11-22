@@ -11,7 +11,7 @@ class StoreReviewRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,18 @@ class StoreReviewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'rating' => 'required',
+            'comment' => 'required',
+            'kebab_shop_id' => 'required',
+            'product_id' => 'required',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'rating.required' => 'Įvertinimas yra privalomas.',
+            'comment.required' => 'Komentaras yra privalomas.',
         ];
     }
 }

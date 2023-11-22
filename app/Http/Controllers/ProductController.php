@@ -19,9 +19,9 @@ class ProductController extends Controller
     {
         $user = User::with("roles")->find(Auth::user()->id);
         if ($user->hasRole('svetaines administratorius')) {
-            $products = Product::all();
+            $products = Product::paginate(10);
         } else if ($user->hasRole('kebabines administratorius')) {
-            $products = $user->products;
+            $products = $user->products()->paginate(10);
         } else {
             abort(403);
         }
@@ -65,7 +65,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $reviews = $product->reviews()->paginate(3);
+        // dd($reviews);
+        return view('products.show', compact('product', 'reviews'));
     }
 
     /**
@@ -102,7 +104,9 @@ class ProductController extends Controller
         $product->save();
 
 
-        return redirect()->route('products.index')->with('success', $product_info['name'] . ' atnaujintas sėkmingai.');
+        // // return redirect()->route('products.index')->with('success', $product_info['name'] . ' atnaujintas sėkmingai.');
+        return back()->with('success', $product_info['name'] . ' atnaujintas sėkmingai.');
+        
     }
 
     /**
@@ -115,8 +119,11 @@ class ProductController extends Controller
         }
 
         $productName = $product->name;
+        $product->reviews()->delete();
+        $product->kebabProducts()->delete();
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', $productName . ' ištrintas sėkmingai.');
+        // // return redirect()->route('products.index')->with('success', $productName . ' ištrintas sėkmingai.');
+        return back()->with('success', $productName . ' ištrintas sėkmingai.');
     }
 }

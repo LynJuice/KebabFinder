@@ -31,7 +31,22 @@ class ReviewController extends Controller
      */
     public function store(StoreReviewRequest $request)
     {
-        //
+        $review_info = $request->validated();
+
+        // if review hasnt been posted on this product by this user and the user does not own the diner then create a review
+        if (!Review::where('user_id', auth()->user()->id)->where('product_id', $review_info['product_id'])->exists()) {
+        $review = Review::create([
+                'user_id' => auth()->user()->id,
+                'diner_id' => $review_info['kebab_shop_id'],
+                'rating' => $review_info['rating'],
+                'comment' => $review_info['comment'],
+                'product_id' => $review_info['product_id'],
+            ]);
+            
+            return redirect()->back()->with('success', 'Atsiliepimas pridėtas sėkmingai.');
+        } else {
+            return redirect()->back()->with('error', 'Jūs jau palikote atsiliepimą šiai kebabinėi.');
+        }
     }
 
     /**
@@ -63,6 +78,11 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+        if ($review->user_id != auth()->user()->id)  {
+            return redirect()->back()->with('error', 'Jūs negalite ištrinti šio atsiliepimo.');
+        }
+
+        $review->delete();
+        return redirect()->back()->with('success', 'Atsiliepimas ištrintas sėkmingai.');
     }
 }

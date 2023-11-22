@@ -1,12 +1,22 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-635b1d69.css",
+    "file": "assets/app-dc08c9f6.css",
     "isEntry": true,
     "src": "resources/css/app.css"
+  },
+  "resources/css/components/map.css": {
+    "file": "assets/map-b04579d0.css",
+    "isEntry": true,
+    "src": "resources/css/components/map.css"
   },
   "resources/js/app.js": {
     "file": "assets/app-6e0eadfb.js",
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/components/map.js": {
+    "file": "assets/map-348234af.js",
+    "isEntry": true,
+    "src": "resources/js/components/map.js"
   }
 }

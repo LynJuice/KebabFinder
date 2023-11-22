@@ -29,7 +29,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data" >
+                        <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body">
 
@@ -159,19 +159,15 @@
                     @foreach ($products as $product)
                     <tr>
                         <td><img src="{{ asset('images/products/' . $product->image) }}" alt="" width="50" height="50" class="rounded-circle"></td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $product->name }}</strong></td>
+                        <td><a href="{{ route('products.show', $product) }}"><strong>{{ $product->name }}</strong></a></td>
                         <td>
                             @if($product->reviews->count('ratings') == 0)
                             <p>Nera atsilepimu apie produkta</p>
                             @else
                             <div class="progress mb-3">
-
-
-
                                 <div class="progress-bar bg-danger" style="width: {{ round($product->reviews->avg('rating')*10) *2 }}%;" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-label"> {{ round($product->reviews->avg('rating') * 10 ) / 10  }} / 5 </div>
                                 </div>
-                                <div class="ms-3"></div>
                             </div>
                             @endif
                         </td>
@@ -193,6 +189,8 @@
                     @endforeach
                 </tbody>
             </table>
+            <br>
+            {{ $products->links() }}
         </div>
     </h5>
 </div>

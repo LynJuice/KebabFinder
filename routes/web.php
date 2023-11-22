@@ -6,6 +6,7 @@ use App\Http\Controllers\KebabProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Diner;
+use App\Http\Controllers\DinerReviewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewController;
 
@@ -31,14 +32,15 @@ Route::get('/', [HomeController::class, "index"])->name('index');
 // Route::resource('kebabShop', 'App\Http\Controllers\KebabShop');
 
 Route::resource('reviews', ReviewController::class);
+Route::resource('dinerReviews', DinerReviewController::class);
 
 // Route::get('/table', function () {
 //     return view('table');
 // })->name('table');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return redirect()->route('admin');
+})->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class);
@@ -49,8 +51,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/table', [DinerController::class, "table"])->name('table');
     Route::get('/admin', function () {return view('admin');})->name('admin');
+    Route::get('/map', [DinerController::class, "map"])->name('map');
+    Route::delete('/users/{user}', [ProfileController::class, 'destroy'])->name('users.destroy');
 });
 
 Route::get('/logout', function () {

@@ -12,8 +12,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon">
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{ asset('img/favicon.png')}}" rel="icon">
+    <link href="{{ asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,13 +21,16 @@
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
     <!-- Vendor CSS Files -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="aos/aos.css" rel="stylesheet">
-    <link href="glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{{ asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{ asset('aos/aos.css')}}" rel="stylesheet">
+    <link href="{{ asset('glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    {{-- MAP --}}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <!-- Template Main CSS File -->
-    <link href="css/main.css" rel="stylesheet">
+    <link href="{{ asset('css/main.css')}}" rel="stylesheet">
     @yield('styles')
 </head>
 
@@ -42,15 +45,18 @@
 
     <div id="preloader"></div>
 
+    {{-- MAP --}}
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <!-- Vendor JS Files -->
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="aos/aos.js"></script>
-    <script src="glightbox/js/glightbox.min.js"></script>
-    <script src="purecounter/purecounter_vanilla.js"></script>
-    <script src="swiper/swiper-bundle.min.js"></script>
-    <script src="php-email-form/validate.js"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('aos/aos.js')}}"></script>
+    <script src="{{ asset('glightbox/js/glightbox.min.js')}}"></script>
+    <script src="{{ asset('purecounter/purecounter_vanilla.js')}}"></script>
+    <script src="{{ asset('swiper/swiper-bundle.min.js')}}"></script>
+    <script src="{{ asset('php-email-form/validate.js')}}"></script>
     <!-- Template Main JS File -->
-    <script src="js/main.js"></script>
+    <script src="{{ asset('js/main.js')}}"></script>
     @yield('scripts')
 </body>
 

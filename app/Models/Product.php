@@ -37,7 +37,13 @@ class Product extends Model
     public function reviews(): HasMany
     {
         // return $this->hasManyThrough(Review::class, KebabProduct::class);
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class)->orderBy('created_at', 'desc');
+    }
+
+    public function kebabProducts(): HasMany
+    {
+        // return $this->hasManyThrough(Review::class, KebabProduct::class);
+        return $this->hasMany(KebabProduct::class);
     }
     
 }

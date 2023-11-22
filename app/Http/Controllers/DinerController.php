@@ -25,9 +25,9 @@ class DinerController extends Controller
     {
         $user = User::with("roles")->find(Auth::user()->id);
         if ($user->hasRole('svetaines administratorius')) {
-            $kebab_list = Diner::all();
+            $kebab_list = Diner::paginate(10);
         } else if ($user->hasRole('kebabines administratorius')) {
-            $kebab_list = $user->kebabShops;
+            $kebab_list = $user->Diners()->paginate(10);
         } else {
             abort(403);
         }
@@ -46,6 +46,18 @@ class DinerController extends Controller
         return view('table', compact("kebab_list"));
     }
 
+    /**
+     * Display a listing of the resource. kebabshops admin page
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+     public function map()
+     {
+         $kebab_list = Diner::all();
+         return view('map', compact("kebab_list"));
+     }
+     
     /**
      * Show the form for creating a new resource.
      */
@@ -66,6 +78,7 @@ class DinerController extends Controller
 
         try {
             $name = $new_kebab_shop->id . '-' . time() . '-' . $request->image->getClientOriginalName();
+            $name = str_replace(' ', '', $name);
             $request->image->storeAs('diners/photos', $name, 'public');
             $new_kebab_shop->image = $name;
             $new_kebab_shop->save();
@@ -75,14 +88,15 @@ class DinerController extends Controller
 
         try {
             $name = $new_kebab_shop->id . '-' . time() . '-' . $request->logo->getClientOriginalName();
-            $request->logo->storeAs('diners/logos', $name, 'public');
+            $name = str_replace(' ', '', $name);
             $new_kebab_shop->logo = $name;
+            $request->logo->storeAs('diners/logos', $name, 'public');
             $new_kebab_shop->save();
         } catch (\Throwable $th) {
             $new_kebab_shop->logo = null;
         }
 
-        return redirect()->route('shops.index')->with('success', $new_kebab_shop->name . ' sėkmingai sukurtas');
+        return back()->with('success', $new_kebab_shop->name . ' sėkmingai sukurtas');
     }
 
     /**
@@ -90,7 +104,8 @@ class DinerController extends Controller
      */
     public function show(Diner $shop)
     {
-        // 
+        $reviews = $shop->reviews()->paginate(3);
+        return view('kebabShops.show', compact('shop', 'reviews'));
     }
 
     /**
@@ -122,6 +137,7 @@ class DinerController extends Controller
 
         try {
             $name = $shop->id . '-' . time() . '-' . $request->image->getClientOriginalName();
+            $name = str_replace(' ', '', $name);
             $request->image->storeAs('diners/photos', $name, 'public');
             $shop->image = $name;
         } catch (\Throwable $th) {
@@ -130,6 +146,7 @@ class DinerController extends Controller
 
         try {
             $name = $shop->id . '-' . time() . '-' . $request->logo->getClientOriginalName();
+            $name = str_replace(' ', '', $name);
             $request->logo->storeAs('diners/logos', $name, 'public');
             $shop->logo = $name;
         } catch (\Throwable $th) {
@@ -138,7 +155,7 @@ class DinerController extends Controller
 
         $shop->save();
 
-        return redirect()->route('shops.index')->with('success', $shop->name . ' sėkmingai atnaujintas');
+        return back()->with('success', $shop->name . ' sėkmingai atnaujintas');
     }
 
     /**
@@ -158,7 +175,7 @@ class DinerController extends Controller
         $shop->shopProducts()->delete();
         $shop->delete();
 
-        return redirect()->route('shops.index')->with('success', $shop->name . ' sėkmingai ištrintas');
+        return back()->with('success', $shop->name . ' sėkmingai ištrintas');
     }
 
 }
