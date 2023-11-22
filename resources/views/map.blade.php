@@ -15,8 +15,9 @@
 
 <body>
     <div class="mb-3">
-        <div id="map"></div>
-    </div><!-- End Google Maps -->
+        <div class="map-container">
+        </div>
+    </div>
 
     <div class="row g-3">
         <div class="col">
@@ -29,7 +30,7 @@
     </div>
 
     <style>
-        #map {
+        .map-container {
             height: 900px;
         }
     </style>
@@ -39,7 +40,7 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     {{-- @foreach ($kebab_list as $kebab) --}}
     <script>
-        const map = L.map('map');
+        const map = L.map(document.querySelector('.map-container'));
         // Initializes map
 
         map.setView([51.505, -0.09], 13);

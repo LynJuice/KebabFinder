@@ -38,8 +38,8 @@ Route::resource('dinerReviews', DinerReviewController::class);
 // })->name('table');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return redirect()->route('admin');
+})->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::resource('products', ProductController::class);
