@@ -74,7 +74,7 @@ class DinerController extends Controller
         $kebab_shop_info = $request->validated();
         $kebab_shop_info['is_open'] = isset($_POST['is_open']);
         $kebab_shop_info['user_id'] = Auth::user()->id;
-        $new_kebab_shop = KebabShops::create($kebab_shop_info);
+        $new_kebab_shop = Diner::create($kebab_shop_info);
 
         try {
             $name = $new_kebab_shop->id . '-' . time() . '-' . $request->image->getClientOriginalName();

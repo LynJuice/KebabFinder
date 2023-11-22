@@ -1,55 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+    {{-- <script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- MAP --}}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Document</title>
-</head>
 
-<body>
-    <div class="mb-3">
-        <div class="map-container">
-        </div>
-    </div>
 
-    <div class="row g-3">
-        <div class="col">
-            <input id="latitudeInput" type="text" class="form-control" placeholder="latitude" aria-label="Flatitude">
-        </div>
-        <div class="col">
-            <input id="longitudeInput" type="text" class="form-control" placeholder="longitude"
-                aria-label="longitude">
-        </div>
-    </div>
-
-    <style>
-        .map-container {
-            height: 900px;
-        }
-    </style>
-
-    {{-- MAP --}}
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    {{-- @foreach ($kebab_list as $kebab) --}}
-    <script>
-        const map = L.map(document.querySelector('.map-container'));
+        const mapEdit = L.mapEdit('mapEdit');
         // Initializes map
 
-        map.setView([51.505, -0.09], 13);
+        mapEdit.setView([51.505, -0.09], 13);
         // Sets initial coordinates and zoom level
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
-        }).addTo(map);
+        }).addTo(mapEdit);
         // Sets map data source and associates with map
 
         let marker, zoomed;
@@ -69,7 +31,7 @@
 
             // Remove the existing marker if it exists
             if (marker) {
-                map.removeLayer(marker);
+                mapEdit.removeLayer(marker);
             }
 
             // Set marker position
@@ -78,7 +40,7 @@
             latitudeInput.value = lat;
             longitudeInput.value = lng;
 
-            map.setView([lat, lng]);
+            mapEdit.setView([lat, lng]);
         }
 
         function error(err) {
@@ -119,21 +81,18 @@
                 mrk.setLatLng([lat, lng]);
 
                 // Update map view
-                map.setView([lat, lng]);
+                mapEdit.setView([lat, lng]);
 
                 // Remove the existing marker if it exists
                 if (marker) {
-                    map.removeLayer(marker);
+                    mapEdit.removeLayer(marker);
                 }
 
                 // Add marker to the map
-                mrk.addTo(map);
+                mrk.addTo(mapEdit);
             }
         }
 
-        mrk.addTo(map);
-    </script>
-    {{-- @endforeach --}}
-</body>
-
-</html>
+        mrk.addTo(mapmapEdit);
+        setTimeout(function () { mapEdit.invalidateSize() }, 800);
+    </script> --}}
