@@ -7,14 +7,15 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View; 
+use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 class ProfileController extends Controller
 {
-    
+
     /**
      * Display the user's profile form.
      */
@@ -46,6 +47,38 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // check if the user has admin role if so delete the user   
+
+        $actingUser = Auth::user();
+        if ($actingUser->hasRole('svetaines administratorius')) {
+            $user = User::find($request->user);
+
+            DB::delete('DELETE FROM diner_reviews WHERE user_id = ?', [$user->id]);
+
+            DB::delete('DELETE FROM reviews WHERE user_id = ?', [$user->id]);
+
+            
+            foreach ($user->diners as $diner) {
+                
+                DB::delete('DELETE FROM diner_reviews WHERE diner_id = ?', [$diner->id]);
+                
+                DB::delete('DELETE FROM kebab_products WHERE diner_id = ?', [$diner->id]);
+            }
+            
+            foreach ($user->products as $product) {
+                DB::delete('DELETE FROM reviews WHERE product_id = ?', [$product->id]);
+
+                $product->delete();
+            }
+
+            foreach ($user->diners as $diner) {
+                $diner->delete();
+            }
+            // delete user
+            $user->delete();
+            return Redirect::to('/users');
+        }
+
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
