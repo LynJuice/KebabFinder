@@ -57,12 +57,17 @@ class ProfileController extends Controller
 
             DB::delete('DELETE FROM reviews WHERE user_id = ?', [$user->id]);
 
+            DB::delete('DELETE FROM review_photos WHERE user_id = ?', [$user->id]);
+            
+
             
             foreach ($user->diners as $diner) {
                 
                 DB::delete('DELETE FROM diner_reviews WHERE diner_id = ?', [$diner->id]);
                 
                 DB::delete('DELETE FROM kebab_products WHERE diner_id = ?', [$diner->id]);
+
+                DB::delete('DELETE FROM review_photos WHERE diner_id = ?', [$diner->id]);
             }
             
             foreach ($user->products as $product) {
