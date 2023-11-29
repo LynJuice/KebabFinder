@@ -75,7 +75,7 @@ class DinerController extends Controller
         $kebab_shop_info['is_open'] = isset($_POST['is_open']);
         $kebab_shop_info['user_id'] = Auth::user()->id;
         $new_kebab_shop = Diner::create($kebab_shop_info);
-
+        // dd($request);
         try {
             $name = $new_kebab_shop->id . '-' . time() . '-' . $request->image->getClientOriginalName();
             $name = str_replace(' ', '', $name);
@@ -95,7 +95,7 @@ class DinerController extends Controller
         } catch (\Throwable $th) {
             $new_kebab_shop->logo = null;
         }
-
+        // dd($new_kebab_shop);
         return back()->with('success', $new_kebab_shop->name . ' sėkmingai sukurtas');
     }
 
@@ -141,7 +141,7 @@ class DinerController extends Controller
             $request->image->storeAs('diners/photos', $name, 'public');
             $shop->image = $name;
         } catch (\Throwable $th) {
-            $shop->image = null;
+            // $shop->image = null;
         }
 
         try {
@@ -150,7 +150,7 @@ class DinerController extends Controller
             $request->logo->storeAs('diners/logos', $name, 'public');
             $shop->logo = $name;
         } catch (\Throwable $th) {
-            $shop->logo = null;
+            // $shop->logo = null;
         }
 
         $shop->save();
